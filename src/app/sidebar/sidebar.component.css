@@ -1,0 +1,27 @@
+/* Définition des styles pour le conteneur principal */
+
+.sidebar{
+
+    height: 100%;
+    width: 100%;
+    background-color: #373759;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: solid red 1px ;
+    /* row-gap: 10px; */
+}
+.sidebartop{
+    height: 20%;
+    background-color: purple !important;
+    width: 100%;
+}
+.sidebarmain{
+    width: 100%;
+    height: 90%;
+    background-color: yellow;
+}
+
+/* #373759 */
+/* #FA5252 */
+/* #F1557E */
