@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { SidebarTopComponent } from '../sidebar-top/sidebar-top.component';
-import { SidebarMainComponent } from '../sidebar-main/sidebar-main.component';
+import { SidebarService } from '../sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [SidebarTopComponent,SidebarMainComponent],
+  imports: [],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  constructor(private sidebarService: SidebarService) {}
 
+  toggleSidebar() {
+    this.sidebarService.toggleSidebar();
+  }
 }

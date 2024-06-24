@@ -1,4 +1,4 @@
-<div class="all" *ngIf="authService.isLoggedIn(); else loginTemplate">
+<div class="all">
   <button class="toggle-sidebar" (click)="toggleSidebar()">
     <i class="uil-bars"></i>
   </button>
@@ -14,6 +14,3 @@
     </div>
   </div>
 </div>
-<ng-template #loginTemplate>
-  <router-outlet></router-outlet>
-</ng-template>

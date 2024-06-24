@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class SidebarService {
-  private sidebarVisible = new BehaviorSubject<boolean>(true);
-  sidebarVisible$ = this.sidebarVisible.asObservable();
+  private sidebarVisibleSubject = new BehaviorSubject<boolean>(true);
+  sidebarVisible$ = this.sidebarVisibleSubject.asObservable();
 
   toggleSidebar() {
-    this.sidebarVisible.next(!this.sidebarVisible.value);
+    this.sidebarVisibleSubject.next(!this.sidebarVisibleSubject.value);
   }
 }
