@@ -1,0 +1,16 @@
+<div class="all">
+    <button class="toggle-sidebar" (click)="toggleSidebar()">
+    <i class="uil-bars"></i>
+  </button>
+    <div class="sidebar" [class.sidebar-hidden]="!sidebarVisible">
+        <app-sidebar></app-sidebar>
+    </div>
+    <div class="main-container" [class.full-width]="!sidebarVisible">
+        <div class="menu">
+            <app-menu></app-menu>
+        </div>
+        <div class="maincontent">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

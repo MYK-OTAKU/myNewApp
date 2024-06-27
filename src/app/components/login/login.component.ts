@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +19,7 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(success => {
       if (success) {
-        this.router.navigate(['/']); // Redirige vers le tableau de bord
+        this.router.navigate(['/dashboard']); // Redirige vers le tableau de bord
       } else {
         alert('Nom d\'utilisateur ou mot de passe incorrect');
       }

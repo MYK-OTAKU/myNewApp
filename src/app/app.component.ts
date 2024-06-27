@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { MenuComponent } from './menu/menu.component';
-import { MaincontentComponent } from './maincontent/maincontent.component';
-import { SidebarService } from './sidebar.service';
-import { AuthService } from './auth.service';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { MaincontentComponent } from './components/maincontent/maincontent.component';
+import { SidebarService } from './services/sidebar.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',

@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
-import { SidebarService } from '../sidebar.service';
-
+import { SidebarService } from'../../services/sidebar.service';
 
 @Component({
-  selector: 'app-menu',
+  selector: 'app-sidebar',
   standalone: true,
   imports: [],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.css'
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css'
 })
-export class MenuComponent {
+export class SidebarComponent {
   constructor(private sidebarService: SidebarService) {}
 
   toggleSidebar() {
