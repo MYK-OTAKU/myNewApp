@@ -6,13 +6,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TableService } from './services/table.service';
 import { ViewTemplateComponent } from './components/view-template/view-template.component'; // Ajoute ton composant ici
-
+import { routes } from './app.routes';
+import { KitchenComponent } from './components/kitchen/kitchen.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
-
     // Autres composants...
   ],
   imports: [
+
     ViewTemplateComponent,  // Ajoute le composant view-template ici
     BrowserModule,
     HttpClientModule,

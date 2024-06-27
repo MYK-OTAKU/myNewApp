@@ -1,43 +1,22 @@
+<!-- src/app/components/sidebar/sidebar.component.html -->
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
-
-  <div class="sidebar-header d-flex flex-column justify-content-center align-items-center px-3 py-4">
-    <img
-         class="img-fluid mb-2"
-         width="150"
-         src="../../assets/images/logo_circle.png"
-         alt="Logo">
-    <div class="text-center">
-      <h5 class="fs-6 mb-0">
-        <a class="text-decoration-none text-white" href="#">John Doe</a>
-      </h5>
-      <p class="mt-1 mb-0 text-white">Admin</p>
+    <div class="sidebar-header d-flex flex-column justify-content-center align-items-center px-3 py-4">
+        <img class="img-fluid mb-2" width="150" src="../../assets/images/logo_circle.png" alt="Logo">
+        <div class="text-center">
+            <h5 class="fs-6 mb-0">
+                <a class="text-decoration-none text-white" href="#">{{ user.prenom }} {{ user.nom }}</a>
+            </h5>
+            <p class="mt-1 mb-0 text-white">Admin</p>
+        </div>
     </div>
-  </div>
-
-  <ul class="categories list-unstyled mt-3">
-    <li>
-      <i class="uil-estate fa-fw"></i><a href="#"> Accueil</a>
-    </li>
-    <li>
-      <i class="uil-folder"></i><a href="#"> Catégories</a>
-    </li>
-    <li>
-      <i class="uil-box"></i><a href="#"> Produits</a>
-    </li>
-    <li>
-      <i class="uil-table"></i><a href="#"> Tables</a>
-    </li>
-    <li>
-      <i class="uil-users-alt"></i><a href="#"> Staff</a>
-    </li>
-    <li>
-      <i class="uil-credit-card"></i><a href="#"> Terminal de vente</a>
-    </li>
-    <li>
-      <i class="uil-utensils-alt"></i><a href="#"> Cuisine</a>
-    </li>
-    <li>
-      <i class="uil-chart-line"></i><a href="#"> Statistique</a>
-    </li>
-  </ul>
+    <ul class="categories list-unstyled mt-3">
+        <li><i class="uil-estate fa-fw"></i><a href="http://localhost:4200/dashboard/viewtemplate"> Accueil</a></li>
+        <li><i class="uil-folder"></i><a routerLink="/categories"> Catégories</a></li>
+        <li><i class="uil-box"></i><a routerLink="/dashboard/products"> Produits</a></li>
+        <li><i class="uil-table"></i><a routerLink="/dashboard/tables"> Tables</a></li>
+        <li><i class="uil-users-alt"></i><a routerLink="/dashboard/staff"> Staff</a></li>
+        <li><i class="uil-credit-card"></i><a routerLink="/dashboard/sales-terminal"> Terminal de vente</a></li>
+        <li><i class="uil-utensils-alt"></i><a routerLink="/dashboard/kitchen"> Cuisine</a></li>
+        <li><i class="uil-chart-line"></i><a routerLink="/dashboard/statistics"> Statistique</a></li>
+    </ul>
 </aside>

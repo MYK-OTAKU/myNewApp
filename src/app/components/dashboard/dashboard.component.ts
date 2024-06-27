@@ -6,6 +6,9 @@ import { MenuComponent } from '../menu/menu.component';
 import { MaincontentComponent } from '../maincontent/maincontent.component';
 import { SidebarService } from '../../services/sidebar.service';
 import { AuthService } from '../../services/auth.service';
+import { ViewTemplateComponent } from '../view-template/view-template.component';
+import { CategoriesComponent } from '../categories/categories.component';
+import { KitchenComponent } from '../kitchen/kitchen.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +18,12 @@ import { AuthService } from '../../services/auth.service';
     CommonModule,
     SidebarComponent,
     MenuComponent,
-    MaincontentComponent
+    MaincontentComponent,
+    ViewTemplateComponent,
+    CategoriesComponent,
+    KitchenComponent,
+
+
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']

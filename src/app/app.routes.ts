@@ -1,10 +1,17 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { P1Component } from './components/p1/p1.component';
-import { P2Component } from './components/p2/p2.component';
-import { P3Component } from './components/p3/p3.component';
 import { AuthGuard } from './services/auth.guard';
+
+import { HomeComponent } from './components/home/home.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { ProductsComponent } from './components/products/products.component';
+import { TablesComponent } from './components/tables/tables.component';
+import { StaffComponent } from './components/staff/staff.component';
+import { SalesTerminalComponent } from './components/sales-terminal/sales-terminal.component';
+import { KitchenComponent } from './components/kitchen/kitchen.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 import { ViewTemplateComponent } from './components/view-template/view-template.component';
 
 export const routes: Routes = [
@@ -14,11 +21,17 @@ export const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'tables', component: ViewTemplateComponent },
-      { path: 'p1', component: P1Component },
-      { path: 'p2', component: P2Component },
-      { path: 'p3', component: P3Component },
-      { path: '', redirectTo: 'tables', pathMatch: 'full' }
+      { path: 'home', component: HomeComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'products', component: ProductsComponent },
+      { path: 'tables', component: TablesComponent },
+      { path: 'staff', component: StaffComponent },
+      { path: 'sales-terminal', component: SalesTerminalComponent },
+      { path: 'kitchen', component: KitchenComponent },
+      { path: 'statistics', component: StatisticsComponent },
+      { path: 'viewtemplate', component: ViewTemplateComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home' }
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
