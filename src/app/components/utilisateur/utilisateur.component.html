@@ -1,0 +1,64 @@
+<!-- src/app/components/utilisateurs/utilisateurs.component.html -->
+<div class="view-container">
+    <div class="top-section">
+        <div class="actions">
+            <div class="action-item">
+                <label class="addbtn" for="add-button">Ajouter un Utilisateur</label>
+                <button id="add-button" (click)="addUtilisateur()">+</button>
+            </div>
+            <div class="action-item action-item-special">
+                <label class="search" for="search-input">Rechercher</label>
+                <input type="text" id="search-input" placeholder="Rechercher ici" class="search-input" [(ngModel)]="searchTerm" (input)="searchUtilisateurs()">
+            </div>
+        </div>
+    </div>
+    <div class="main-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th (click)="sortBy('nom')">Nom
+                        <span *ngIf="sortKey === 'nom' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'nom' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('prenom')">Prénom
+                        <span *ngIf="sortKey === 'prenom' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'prenom' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('role')">Role
+                        <span *ngIf="sortKey === 'role' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'role' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('nomUtilisateur')">Nom d'utilisateur
+                        <span *ngIf="sortKey === 'nomUtilisateur' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'nomUtilisateur' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('email')">Email
+                        <span *ngIf="sortKey === 'email' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'email' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let utilisateur of filteredUtilisateurs; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td class="truncate">{{ utilisateur.nom }}</td>
+                    <td class="truncate">{{ utilisateur.prenom }}</td>
+                    <td>{{ utilisateur.role }}</td>
+                    <td class="truncate">{{ utilisateur.nomUtilisateur }}</td>
+                    <td class="truncate">{{ utilisateur.email }}</td>
+                    <td class="action-buttons">
+                        <button (click)="editUtilisateur(utilisateur)">
+              <img src="../../../assets/images/icons8-pencil-96.png" alt="Edit" />
+            </button>
+                        <button (click)="deleteUtilisateur(utilisateur)">
+              <img src="../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
+            </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="scroll-top-button" (click)="scrollToTop()">↑</button>
+</div>

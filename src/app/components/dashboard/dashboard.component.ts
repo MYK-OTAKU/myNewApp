@@ -1,3 +1,4 @@
+// src/app/components/dashboard/dashboard.component.ts
 import { Component, Inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -22,8 +23,6 @@ import { KitchenComponent } from '../kitchen/kitchen.component';
     ViewTemplateComponent,
     CategoriesComponent,
     KitchenComponent,
-
-
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']

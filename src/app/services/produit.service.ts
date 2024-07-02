@@ -1,21 +1,22 @@
-// src/app/services/table.service.ts
+// src/app/services/produit.service.ts
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Produit } from '../models/produit.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TableService {
-  private baseUrl = 'http://localhost:3200/api/tables';
+export class ProduitService {
+  private baseUrl = 'http://localhost:3200/api/produits';
 
   constructor(private http: HttpClient) {}
 
-  getTables(): Observable<any[]> {
+  getProduits(): Observable<Produit[]> {
     return this.http.get<any>(`${this.baseUrl}/`).pipe(
       map(response => {
-        console.log('Response from backend:', response);
         if (Array.isArray(response)) {
           return response;
         } else if (response.données && Array.isArray(response.données)) {
@@ -27,15 +28,15 @@ export class TableService {
     );
   }
 
-  addTable(table: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/`, table);
+  addProduit(produit: Produit): Observable<Produit> {
+    return this.http.post<Produit>(`${this.baseUrl}/`, produit);
   }
 
-  editTable(id: number, table: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, table);
+  editProduit(id: number, produit: Produit): Observable<Produit> {
+    return this.http.put<Produit>(`${this.baseUrl}/${id}`, produit);
   }
 
-  deleteTable(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  deleteProduit(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 }

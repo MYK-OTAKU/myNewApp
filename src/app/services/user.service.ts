@@ -8,16 +8,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:3200/api/utilisateurs'; // Vérifiez l'URL
+  private baseUrl = 'http://localhost:3200/api/utilisateurs/'; // Assurez-vous que l'URL est correcte
 
   constructor(private http: HttpClient) {}
 
   getUserProfile(): Observable<any> {
-    console.log('Fetching user profile from:', `${this.baseUrl}/`);
-    return this.http.get<any>(`${this.baseUrl}/`).pipe(
+    console.log('Fetching user profile from:', `${this.baseUrl}`);
+    return this.http.get<any>(`${this.baseUrl}`).pipe(
       map(response => {
         console.log('Response from backend:', response);
-        return response.data[0]; // Accède directement aux données utilisateur
+        if (response && response.données && response.données.length > 0) {
+          return response.données[0]; // Assurez-vous que les données utilisateur sont accessibles
+        } else {
+          throw new Error('Données utilisateur non trouvées');
+        }
       })
     );
   }

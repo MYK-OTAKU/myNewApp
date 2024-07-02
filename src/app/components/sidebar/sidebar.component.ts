@@ -3,11 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar.service';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-
+import { CategoriesComponent } from '../categories/categories.component';
+import { Router,RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,CategoriesComponent,RouterOutlet,RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })

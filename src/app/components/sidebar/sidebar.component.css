@@ -1,97 +1,100 @@
 .sidebar {
-  background-color: #32324d;
-  color: white;
-  width: 17vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    background-color: #32324d;
+    color: white;
+    width: 17vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
 }
 
 .sidebar-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.imglogo {
+    background-size: cover;
+    object-fit: cover;
 }
 
 .sidebar-header img {
-  width: 150px;
-  margin-bottom: 15px;
+    object-fit: cover;
+    width: 50%;
+    margin-bottom: 15px;
 }
 
 .sidebar-header .text-center {
-  text-align: center;
+    text-align: center;
 }
 
 .categories {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 20px;
-  overflow-x: hidden;
-  overflow-y: hidden;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .categories li {
-  padding: 15px 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s, transform 0.3s;
-  border-bottom: 1px solid #444;
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+    border-bottom: 1px solid #444;
 }
 
 .categories li i {
-  margin-right: 10px;
-  font-size: 18px;
+    margin-right: 10px;
+    font-size: 18px;
 }
 
 .categories a {
-  text-decoration: none;
-  color: white;
-  display: block;
-  width: 100%;
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
 }
 
 .categories a:hover {
-  color: #a0a0c5;
+    color: #a0a0c5;
 }
 
 .categories li:hover {
-  background-color: #41416a;
-  transform: scale(1.05);
+    background-color: #41416a;
+    transform: scale(1.05);
 }
 
 @media (max-width: 900px) and (min-width: 651px) {
-  .sidebar {
-    width: 25vw;
-    position: relative;
-  }
-
-  .sidebar-hidden {
-    transform: translateX(-100%);
-  }
+    .sidebar {
+        width: 25vw;
+        position: relative;
+    }
+    .sidebar-hidden {
+        transform: translateX(-100%);
+    }
 }
 
 @media (max-width: 650px) {
-  .sidebar {
-    width: 70vw;
-    position: fixed;
-    z-index: 10;
-    height: 100%;
-    transform: translateX(-100%);
-  }
-
-  .sidebar.sidebar-hidden {
-    display: none;
-  }
-
-  .sidebar:not(.sidebar-hidden) {
-    transform: translateX(0);
-  }
+    .sidebar {
+        width: 70vw;
+        position: fixed;
+        z-index: 10;
+        height: 100%;
+        transform: translateX(-100%);
+    }
+    .sidebar.sidebar-hidden {
+        display: none;
+    }
+    .sidebar:not(.sidebar-hidden) {
+        transform: translateX(0);
+    }
 }

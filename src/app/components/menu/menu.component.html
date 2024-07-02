@@ -1,30 +1,37 @@
+<!-- src/app/components/menu/menu.component.html -->
 <nav class="navbar navbar-expand-md">
     <div class="container-fluid mx-2">
         <div class="navbar-header">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
         <i class="uil-bars show-side-btn "></i>
-
       </button>
             <a class="navbar-brand" href="#">Admin<span class="main-color">Space</span></a>
         </div>
         <div class="collapse navbar-collapse" id="toggle-navbar">
             <ul class="navbar-nav ms-auto">
+                <li>
+                    <button mat-button [matMenuTriggerFor]="belowMenu" aria-label="Menu">Below</button>
+                    <mat-menu #belowMenu="matMenu" yPosition="below">
+                        <button mat-menu-item aria-label="Item 1">Item 1</button>
+                        <button mat-menu-item aria-label="Item 2">Item 2</button>
+                    </mat-menu>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Paramètres
           </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Mon Compte</a></li>
-                        <li><a class="dropdown-item" href="#">Notification</a></li>
-                        <li><a class="dropdown-item" href="#">Aide</a></li>
+                        <li><a class="dropdown-item" aria-label="Mon Compte">Mon Compte</a></li>
+                        <li><a class="dropdown-item" aria-label="Notification">Notification</a></li>
+                        <li><a class="dropdown-item" aria-label="Aide">Aide</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+                        <li><a class="dropdown-item" (click)="logout()" aria-label="Déconnexion">Déconnexion</a></li>
                     </ul>
                 </li>
-                <li class=" hide-mobile1 nav-item">
-                    <button class="nav-link toggle-sidebar" (click)="toggleSidebar()">
+                <li class="hide-mobile1 nav-item">
+                    <button class="nav-link toggle-sidebar" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
             <i class="uil-bars show-side-btn"></i>
           </button>
                 </li>

@@ -1,3 +1,5 @@
+/* src/app/components/produits/produits.component.css */
+
 .view-container {
     display: flex;
     flex-direction: column;
@@ -6,10 +8,7 @@
     padding: 20px;
     box-sizing: border-box;
     margin-top: 20px;
-    /* Ajouter une marge en haut */
     background-color: #f5f5f5;
-    /* background-color: red; */
-    /* Fond plus clair pour une apparence propre */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow-y: hidden;
@@ -38,9 +37,6 @@
     margin-left: 25px;
 }
 
-
-/* .search {} */
-
 .action-item label {
     margin-bottom: 5px;
     font-weight: bold;
@@ -53,7 +49,6 @@
     background-color: #f5f5f5;
     width: 64px;
     height: 64px;
-    /* Chemin de l'image par défaut */
     background-image: url('../../../assets/images/icons8-add-button-96.png');
     background-size: cover;
     border: none;
@@ -62,7 +57,6 @@
 
 #add-button:hover {
     background-image: url('../../../assets/images/icons8-add-button-96.pngc3.png');
-    /* Chemin de l'image au survol */
 }
 
 #search-input {
@@ -77,7 +71,6 @@
 .action-item-special {
     width: 320px;
     margin-left: 20px;
-    /* border: red 1px solid; */
 }
 
 .main-section {
@@ -90,7 +83,6 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background-color: #fff;
-    /* Fond blanc pour la table */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -98,7 +90,6 @@ table {
 
 thead {
     background-color: #343a40;
-    /* Couleur de fond du thead */
     color: white;
 }
 
@@ -107,11 +98,13 @@ td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
+    max-width: 200px;
 }
 
 th {
     background-color: #343a40;
     color: white;
+    cursor: pointer;
 }
 
 tbody tr:nth-child(even) {
@@ -142,7 +135,6 @@ tbody tr:hover {
 
 .action-buttons img:hover {
     filter: brightness(0.8);
-    /* Assombrit l'image au survol pour un effet visuel */
 }
 
 #scroll-top-button {
@@ -163,4 +155,36 @@ tbody tr:hover {
 
 #scroll-top-button:hover {
     background-color: #495057;
+}
+
+
+/* Troncature des cellules */
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.truncate-image {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    cursor: pointer;
+    position: relative;
+}
+
+.truncate-image:hover::after {
+    content: attr(title);
+    position: absolute;
+    background: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    top: -5px;
+    left: 105%;
+    white-space: nowrap;
 }

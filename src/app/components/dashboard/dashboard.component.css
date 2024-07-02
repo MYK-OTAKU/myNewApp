@@ -60,7 +60,8 @@ body {
 }
 
 .maincontent {
-    background-color: beige;
+    background-color: #f5f5f5;
+    /* background-color: beige; */
     flex: 1;
     color: #000;
 }

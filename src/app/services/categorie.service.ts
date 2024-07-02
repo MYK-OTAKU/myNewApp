@@ -1,18 +1,19 @@
-// src/app/services/table.service.ts
+// src/app/services/category.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class TableService {
-  private baseUrl = 'http://localhost:3200/api/tables';
+export class CategorieService {
+  private baseUrl = 'http://localhost:3200/api/categories'; // Assurez-vous que l'URL est correcte
 
   constructor(private http: HttpClient) {}
 
-  getTables(): Observable<any[]> {
+  getCategories(): Observable<any[]> {
     return this.http.get<any>(`${this.baseUrl}/`).pipe(
       map(response => {
         console.log('Response from backend:', response);
@@ -27,15 +28,17 @@ export class TableService {
     );
   }
 
-  addTable(table: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/`, table);
+  addCategory(category: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/`, category);
   }
 
-  editTable(id: number, table: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, table);
+  editCategory(id: number, category: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, category);
   }
 
-  deleteTable(id: number): Observable<any> {
+  deleteCategory(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
 }
+

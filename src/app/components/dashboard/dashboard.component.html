@@ -1,7 +1,7 @@
 <div class="all">
-    <button class="toggle-sidebar" (click)="toggleSidebar()">
-    <i class="uil-bars"></i>
-  </button>
+    <button class="toggle-sidebar" (click)="toggleSidebar()" title="Toggle Sidebar">
+      <i class="uil-bars"></i>
+    </button>
     <div class="sidebar" [class.sidebar-hidden]="!sidebarVisible">
         <app-sidebar></app-sidebar>
     </div>
@@ -14,3 +14,4 @@
         </div>
     </div>
 </div>
+

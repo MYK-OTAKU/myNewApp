@@ -12,6 +12,10 @@ import { AuthInterceptor } from './app/services/auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from './environments/environment';
 import { enableProdMode } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+
 
 if (environment.production) {
   enableProdMode();
@@ -23,6 +27,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(HttpClientModule, CommonModule),
     AuthService,
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, provideAnimationsAsync()
   ]
 }).catch(err => console.error(err));
