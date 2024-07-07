@@ -27,6 +27,10 @@ export class TableService {
     );
   }
 
+  getTable(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`);
+  }
+
   addTable(table: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/`, table);
   }

@@ -1,0 +1,54 @@
+<div class="modal" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content form-container" (click)="$event.stopPropagation()">
+        <div class="modal-header form-header">
+            <img src="../../../assets/images/icons8-package-52.png" alt="Icone de catégorie" class="header-icon">
+            <h2>Ajouter un Produit</h2>
+        </div>
+        <div class="form-body">
+            <form (ngSubmit)="saveProduct()">
+                <div class="form-main">
+                    <div class="form-left">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" class="form-control" [(ngModel)]="product.nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix">Prix</label>
+                            <input type="number" id="prix" class="form-control" [(ngModel)]="product.prix" name="prix" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantiteStock">Quantité Stock</label>
+                            <input type="number" id="quantiteStock" class="form-control" [(ngModel)]="product.quantiteStock" name="quantiteStock">
+                        </div>
+                        <div class="form-group">
+                            <label for="categorieId">Catégorie</label>
+                            <select id="categorieId" class="form-control" [(ngModel)]="product.categorieId" name="categorieId" required>
+                <option *ngFor="let categorie of categories" [value]="categorie.id">{{ categorie.nom }}</option>
+              </select>
+                        </div>
+                    </div>
+                    <div class="form-right">
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" class="form-control" [(ngModel)]="product.description" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="disponible">Disponible</label>
+                            <input type="checkbox" id="disponible" class="form-control-checkbox" [(ngModel)]="product.disponible" name="disponible">
+                        </div>
+                        <div class="form-group image-group">
+                            <label for="imagePrincipale">Image</label>
+                            <img [src]="selectedImage || defaultImage" alt="Image du produit" class="product-image">
+                            <button type="button" class="btn btn-choose-file" (click)="onChooseFile()">Parcourir</button>
+                            <input type="file" id="imagePrincipale" class="form-control-file" (change)="onFileSelected($event)" hidden>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions modal-footer">
+                    <button type="submit" class="btn btn-save">Enregistrer</button>
+                    <button type="button" class="btn btn-close1" (click)="closeModal()">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

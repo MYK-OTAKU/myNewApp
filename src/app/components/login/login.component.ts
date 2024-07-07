@@ -29,7 +29,7 @@ export class LoginComponent {
       }
     });
   }
-  
+
 
   requestPasswordReset() {
     // Logique pour la réinitialisation du mot de passe

@@ -1,13 +1,14 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ProduitService } from '../../services/produit.service';
 import { Produit } from '../../models/produit.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   selector: 'app-produits',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ProductFormComponent],
   templateUrl: './produits.component.html',
   styleUrls: ['./produits.component.css']
 })
@@ -18,6 +19,8 @@ export class ProduitsComponent implements OnInit {
   showScrollTopButton = false;
   sortKey: keyof Produit | '' = '';
   sortDirection: 'asc' | 'desc' = 'asc';
+
+  @ViewChild('productForm') productForm!: ProductFormComponent;
 
   constructor(private produitService: ProduitService) {}
 
@@ -34,11 +37,11 @@ export class ProduitsComponent implements OnInit {
   }
 
   addProduit(): void {
-    // Implémentez la logique pour ajouter un produit
+    this.productForm.openModal();
   }
 
   editProduit(produit: Produit): void {
-    // Implémentez la logique pour modifier un produit
+    this.productForm.openModal(produit);
   }
 
   deleteProduit(produit: Produit): void {

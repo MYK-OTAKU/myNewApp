@@ -1,18 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { UtilisateursComponent } from './utilisateur.component'; // Corrigez ce chemin si nécessaire
 
-import { UtilisateurComponent } from './utilisateur.component';
-
-describe('UtilisateurComponent', () => {
-  let component: UtilisateurComponent;
-  let fixture: ComponentFixture<UtilisateurComponent>;
+describe('UtilisateursComponent', () => {
+  let component: UtilisateursComponent;
+  let fixture: ComponentFixture<UtilisateursComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UtilisateurComponent]
+      declarations: [ UtilisateursComponent ]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(UtilisateurComponent);
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(UtilisateursComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

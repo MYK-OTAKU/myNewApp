@@ -1,10 +1,10 @@
-<!-- src/app/components/produits/produits.component.html -->
 <div class="view-container">
     <div class="top-section">
         <div class="actions">
             <div class="action-item">
                 <label class="addbtn" for="add-button">Ajouter un Produit</label>
                 <button id="add-button" (click)="addProduit()">+</button>
+                <app-product-form #productForm></app-product-form>
             </div>
             <div class="action-item action-item-special">
                 <label class="search" for="search-input">Rechercher</label>
@@ -29,15 +29,10 @@
                         <span *ngIf="sortKey === 'prix' && sortDirection === 'asc'">&#9650;</span>
                         <span *ngIf="sortKey === 'prix' && sortDirection === 'desc'">&#9660;</span>
                     </th>
-                    <th (click)="sortBy('quantiteStock')">Qte
+                    <th (click)="sortBy('quantiteStock')">Quantité en Stock
                         <span *ngIf="sortKey === 'quantiteStock' && sortDirection === 'asc'">&#9650;</span>
                         <span *ngIf="sortKey === 'quantiteStock' && sortDirection === 'desc'">&#9660;</span>
                     </th>
-                    <th (click)="sortBy('disponible')">Disponible
-                        <span *ngIf="sortKey === 'disponible' && sortDirection === 'asc'">&#9650;</span>
-                        <span *ngIf="sortKey === 'disponible' && sortDirection === 'desc'">&#9660;</span>
-                    </th>
-                    <th>Image</th>
                     <th>Catégorie</th>
                     <th>Actions</th>
                 </tr>
@@ -45,20 +40,18 @@
             <tbody>
                 <tr *ngFor="let produit of filteredProduits; let i = index">
                     <td>{{ i + 1 }}</td>
-                    <td class="truncate">{{ produit.nom }}</td>
-                    <td class="truncate">{{ produit.description }}</td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.description }}</td>
                     <td>{{ produit.prix }}</td>
                     <td>{{ produit.quantiteStock }}</td>
-                    <td>{{ produit.disponible ? 'Oui' : 'Non' }}</td>
-                    <td class="truncate-image" title="{{ produit.imagePrincipale }}">{{ produit.imagePrincipale }}</td>
-                    <td>{{ produit.Categorie?.nom || 'Non catégorisé' }}</td>
+                    <td>{{ produit.Categorie?.nom }}</td>
                     <td class="action-buttons">
                         <button (click)="editProduit(produit)">
-            <img src="../../../assets/images/icons8-pencil-96.png" alt="Edit" />
-          </button>
+              <img src="../../../assets/images/icons8-pencil-96.png" alt="Edit" />
+            </button>
                         <button (click)="deleteProduit(produit)">
-            <img src="../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
-          </button>
+              <img src="../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
+            </button>
                     </td>
                 </tr>
             </tbody>

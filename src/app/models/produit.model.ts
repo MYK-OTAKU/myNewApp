@@ -4,6 +4,7 @@ export interface Categorie {
   description?: string;
 }
 
+
 export interface Produit {
   id: number;
   nom: string;

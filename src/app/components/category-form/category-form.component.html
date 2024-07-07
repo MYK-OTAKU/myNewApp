@@ -1,0 +1,24 @@
+<div class="modal" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content form-container" (click)="$event.stopPropagation()">
+        <div class="modal-header form-header">
+            <img src="../../../assets/images/icons8-package-52.png" alt="Icone de catégorie">
+            <h2>{{ isEditMode ? 'Modifier' : 'Ajouter' }} une Catégorie</h2>
+        </div>
+        <div class="modal-body form-body">
+            <form (ngSubmit)="saveCategory()">
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" class="form-control" [(ngModel)]="category.nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" [(ngModel)]="category.description" name="description" required></textarea>
+                </div>
+                <div class="form-actions modal-footer">
+                    <button type="submit" class="btn btn-save">{{ isEditMode ? 'Modifier' : 'Enregistrer' }}</button>
+                    <button type="button" class="btn btn-close1" (click)="closeModal()">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

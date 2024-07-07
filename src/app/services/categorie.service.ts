@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import { Categorie } from '../models/produit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,17 +28,19 @@ export class CategorieService {
     );
   }
 
-  addCategory(category: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/`, category);
+  getCategory(id: number): Observable<Categorie> {
+    return this.http.get<Categorie>(`${this.baseUrl}/${id}`);
   }
 
-  editCategory(id: number, category: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, category);
+  addCategory(category: Categorie): Observable<Categorie> {
+    return this.http.post<Categorie>(`${this.baseUrl}/`, category);
   }
 
-  deleteCategory(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+  editCategory(id: number, category: Categorie): Observable<Categorie> {
+    return this.http.put<Categorie>(`${this.baseUrl}/${id}`, category);
   }
 
+  deleteCategory(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
 }
-

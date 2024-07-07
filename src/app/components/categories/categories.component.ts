@@ -1,13 +1,13 @@
-// src/app/components/categories/categories.component.ts
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CategorieService } from '../../services/categorie.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CategoryFormComponent } from '../category-form/category-form.component';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CategoryFormComponent],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
@@ -18,6 +18,8 @@ export class CategoriesComponent implements OnInit {
   showScrollTopButton = false;
   sortKey: string = '';
   sortDirection: 'asc' | 'desc' = 'asc';
+
+  @ViewChild('categoryForm') categoryForm!: CategoryFormComponent;
 
   constructor(private categorieService: CategorieService) {}
 
@@ -34,54 +36,50 @@ export class CategoriesComponent implements OnInit {
   }
 
   addCategory(): void {
-    // Implémentez la logique pour ajouter une catégorie
+    this.categoryForm.openModal();
   }
 
   editCategory(category: any): void {
-    // Implémentez la logique pour modifier une catégorie
+    this.categoryForm.openModal(category);
   }
 
   deleteCategory(category: any): void {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette catégorie?')) {
-      this.categorieService.deleteCategory(category.id).subscribe(() => {
-        this.categories = this.categories.filter(c => c.id !== category.id);
-        this.searchCategories();
-      });
-    }
+    this.categorieService.deleteCategory(category.id).subscribe({
+      next: () => {
+        console.log('Category deleted successfully');
+        this.filteredCategories = this.filteredCategories.filter(c => c.id !== category.id);
+      },
+      error: (error) => {
+        console.error('Error deleting category:', error);
+      }
+    });
   }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.showScrollTopButton = window.scrollY > 300;
+    this.showScrollTopButton = window.pageYOffset > 300;
   }
 
-  scrollToTop(): void {
+  scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  searchCategories(): void {
-    const term = this.searchTerm.toLowerCase();
+  searchCategories() {
     this.filteredCategories = this.categories.filter(category =>
-      category.nom.toLowerCase().includes(term) ||
-      category.description.toLowerCase().includes(term)
+      category.nom.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      category.description.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
-  sortBy(key: string): void {
+  sortBy(key: string) {
     if (this.sortKey === key) {
       this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
     } else {
       this.sortKey = key;
       this.sortDirection = 'asc';
     }
-
     this.filteredCategories.sort((a, b) => {
-      let comparison = 0;
-      if (a[key] > b[key]) {
-        comparison = 1;
-      } else if (a[key] < b[key]) {
-        comparison = -1;
-      }
+      const comparison = a[key].localeCompare(b[key]);
       return this.sortDirection === 'asc' ? comparison : -comparison;
     });
   }

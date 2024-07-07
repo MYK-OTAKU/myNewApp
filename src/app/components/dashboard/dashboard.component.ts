@@ -10,6 +10,8 @@ import { AuthService } from '../../services/auth.service';
 import { ViewTemplateComponent } from '../view-template/view-template.component';
 import { CategoriesComponent } from '../categories/categories.component';
 import { KitchenComponent } from '../kitchen/kitchen.component';
+import { EmployeeFormComponent } from '../employee-form/employee-form.component';
+import {  ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -46,5 +48,5 @@ export class DashboardComponent {
 
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
-  }
+}
 }

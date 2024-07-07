@@ -27,6 +27,9 @@ export class UtilisateurService {
       })
     );
   }
+  creerUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.post<Utilisateur>(`${this.baseUrl}/`, utilisateur);
+  }
 
   addUtilisateur(utilisateur: Utilisateur): Observable<Utilisateur> {
     return this.http.post<Utilisateur>(this.baseUrl, utilisateur);
@@ -39,4 +42,16 @@ export class UtilisateurService {
   deleteUtilisateur(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+  // Ajoutez cette méthode pour obtenir un utilisateur par son ID
+  getUtilisateur(id: number): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(`${this.baseUrl}/${id}`);
+  }
+
+
+  // Ajoutez cette méthode pour mettre à jour un utilisateur
+  mettreAJourUtilisateur(id: number, utilisateur: Utilisateur): Observable<Utilisateur> {
+    return this.http.put<Utilisateur>(`${this.baseUrl}/${id}`, utilisateur);
+  }
+
 }

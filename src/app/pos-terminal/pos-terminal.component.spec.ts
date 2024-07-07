@@ -11,7 +11,7 @@ describe('PosTerminalComponent', () => {
       imports: [PosTerminalComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PosTerminalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

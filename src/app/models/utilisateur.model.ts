@@ -1,13 +1,14 @@
 // src/app/models/utilisateur.model.ts
-
 export interface Utilisateur {
-  id: number;
+  id?: number;
   nom: string;
   prenom: string;
   role: 'admin' | 'serveur' | 'cuisinier' | 'client' | 'superadmin';
   nomUtilisateur: string;
+  motDePasse: string;
   email: string;
   numeroTel?: string;
   adresse?: string;
-  recette?: number; // Seulement pour les serveurs
+  recette?: number;
+
 }

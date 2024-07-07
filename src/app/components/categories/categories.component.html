@@ -1,10 +1,10 @@
-<!-- src/app/components/categories/categories.component.html -->
 <div class="view-container">
     <div class="top-section">
         <div class="actions">
             <div class="action-item">
                 <label class="addbtn" for="add-button">Ajouter une Catégorie</label>
                 <button id="add-button" (click)="addCategory()">+</button>
+                <app-category-form #categoryForm></app-category-form>
             </div>
             <div class="action-item action-item-special">
                 <label class="search" for="search-input">Rechercher</label>
@@ -35,11 +35,11 @@
                     <td>{{ category.description }}</td>
                     <td class="action-buttons">
                         <button (click)="editCategory(category)">
-                      <img src="../../../assets/images/icons8-pencil-96.png" alt="Edit" />
-                  </button>
+              <img src="../../../assets/images/icons8-pencil-96.png" alt="Edit" />
+            </button>
                         <button (click)="deleteCategory(category)">
-                      <img src="../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
-                  </button>
+              <img src="../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
+            </button>
                     </td>
                 </tr>
             </tbody>

@@ -1,0 +1,34 @@
+<div class="modal" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content form-container" (click)="$event.stopPropagation()">
+        <div class="modal-header form-header">
+            <img src="../../../assets/images/icons8-table-50.png" alt="Icone de table" class="header-icon">
+            <h2>Ajouter une Table</h2>
+        </div>
+        <div class="form-body">
+            <form (ngSubmit)="saveTable()">
+                <div class="form-main">
+                    <div class="form-left">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" class="form-control" [(ngModel)]="table.nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="capacite">Capacité</label>
+                            <input type="number" id="capacite" class="form-control" [(ngModel)]="table.capacite" name="capacite" required>
+                        </div>
+                    </div>
+                    <div class="form-right">
+                        <div class="form-group">
+                            <label for="disponibilite">Disponibilité</label>
+                            <input type="checkbox" id="disponibilite" class="form-control-checkbox" [(ngModel)]="table.disponibilite" name="disponibilite">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions modal-footer">
+                    <button type="submit" class="btn btn-save">Enregistrer</button>
+                    <button type="button" class="btn btn-close1" (click)="closeModal()">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

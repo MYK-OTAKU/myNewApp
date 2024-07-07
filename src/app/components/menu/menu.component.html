@@ -2,18 +2,24 @@
 <nav class="navbar navbar-expand-md">
     <div class="container-fluid mx-2">
         <div class="navbar-header">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="uil-bars show-side-btn "></i>
-      </button>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation" id="menu-toggle">
+              <i class="bi bi-toggle-off"></i>
+            </button>
+
+
+
             <a class="navbar-brand" href="#">Admin<span class="main-color">Space</span></a>
         </div>
         <div class="collapse navbar-collapse" id="toggle-navbar">
             <ul class="navbar-nav ms-auto">
                 <li>
-                    <button mat-button [matMenuTriggerFor]="belowMenu" aria-label="Menu">Below</button>
+                    <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-link" saria-label="Menu">Paramètres</button>
                     <mat-menu #belowMenu="matMenu" yPosition="below">
-                        <button mat-menu-item aria-label="Item 1">Item 1</button>
-                        <button mat-menu-item aria-label="Item 2">Item 2</button>
+                        <button mat-menu-item aria-label="Mon Compte">Mon Compte</button>
+                        <button mat-menu-item aria-label="Aide">Aide</button>
+                        <button mat-menu-item aria-label="Notification">Notification</button>
+                        <button (click)="logout()" mat-menu-item aria-label="Déconnexion">Déconnexion</button>
                     </mat-menu>
                 </li>
                 <li class="nav-item dropdown">

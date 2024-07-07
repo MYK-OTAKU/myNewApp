@@ -1,0 +1,63 @@
+.message-box {
+    width: 400px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+}
+
+.message-box-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-box-left img {
+    width: 50px;
+    height: 50px;
+}
+
+.message-box-right {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-box-header {
+    flex: 1;
+}
+
+.message-box-footer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.message-box-footer button {
+    margin-left: 10px;
+}
+
+.message-box.success {
+    border-color: green;
+}
+
+.message-box.error {
+    border-color: red;
+}
+
+.message-box.warning {
+    border-color: orange;
+}
+
+.message-box.confirmation {
+    border-color: blue;
+}

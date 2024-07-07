@@ -1,25 +1,34 @@
-// src/app/components/view-template/view-template.component.ts
-import { Component, HostListener, OnInit } from '@angular/core';
-import { TableService } from '../../services/table.service';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Ajout de FormsModule
+import { TableService } from '../../services/table.service';
+import { TableFormComponent } from '../table-form/table-form.component';
 
 @Component({
   selector: 'app-view-template',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, TableFormComponent], // Ajout de FormsModule aux imports
   templateUrl: './view-template.component.html',
   styleUrls: ['./view-template.component.css']
 })
 export class ViewTemplateComponent implements OnInit {
+  @ViewChild('tableForm') tableFormComponent!: TableFormComponent;
   tables: any[] = [];
+  filteredTables: any[] = [];
+  searchTerm: string = '';
   showScrollTopButton = false;
 
   constructor(private tableService: TableService) {}
 
   ngOnInit(): void {
+    this.loadTables();
+  }
+
+  loadTables(): void {
     this.tableService.getTables().subscribe({
       next: (data: any[]) => {
         this.tables = data;
+        this.filteredTables = data;
       },
       error: (error) => {
         console.error('Error fetching tables:', error);
@@ -28,19 +37,28 @@ export class ViewTemplateComponent implements OnInit {
   }
 
   addTable(): void {
-    // Implémente la logique pour ajouter une table
+    this.tableFormComponent.openModal();
   }
 
   editTable(table: any): void {
-    // Implémente la logique pour modifier une table
+    this.tableFormComponent.openModal(table);
   }
 
   deleteTable(table: any): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette table?')) {
       this.tableService.deleteTable(table.id).subscribe(() => {
         this.tables = this.tables.filter(t => t.id !== table.id);
+        this.searchTables();
       });
     }
+  }
+
+  searchTables(): void {
+    this.filteredTables = this.tables.filter(table =>
+      table.nom.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      table.capacite.toString().includes(this.searchTerm.toLowerCase()) ||
+      (table.disponibilite ? 'oui' : 'non').includes(this.searchTerm.toLowerCase())
+    );
   }
 
   @HostListener('window:scroll', [])

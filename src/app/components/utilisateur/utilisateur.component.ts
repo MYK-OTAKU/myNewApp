@@ -5,11 +5,12 @@ import { UtilisateurService } from '../../services/utilisateur.service';
 import { Utilisateur } from '../../models/utilisateur.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EmployeeFormComponent } from '../employee-form/employee-form.component';
 
 @Component({
   selector: 'app-utilisateurs',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, EmployeeFormComponent],
   templateUrl: './utilisateur.component.html',
   styleUrls: ['./utilisateur.component.css']
 })
@@ -45,7 +46,7 @@ export class UtilisateursComponent implements OnInit {
 
   deleteUtilisateur(utilisateur: Utilisateur): void {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur?')) {
-      this.utilisateurService.deleteUtilisateur(utilisateur.id).subscribe(() => {
+      this.utilisateurService.deleteUtilisateur(utilisateur.id!).subscribe(() => {
         this.utilisateurs = this.utilisateurs.filter(u => u.id !== utilisateur.id);
         this.searchUtilisateurs();
       });
