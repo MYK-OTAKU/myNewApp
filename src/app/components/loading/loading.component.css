@@ -1,0 +1,112 @@
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: black;
+    }
+}
+
+@keyframes loadProgress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.loading-container {
+    height: 100%;
+    /* Utilisation de height: 100% */
+    background-color: #f8f9fa;
+    color: #4a4a77;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+.loading-content {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+}
+
+.app-logo {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.welcome-message {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    overflow: hidden;
+    white-space: pre-wrap;
+    /* Permet des retours à la ligne automatiques */
+    border-right: 3px solid;
+    width: 100%;
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+@media (max-width: 600px) {
+    .welcome-message {
+        font-size: 1.2rem;
+        width: 100%;
+        white-space: pre-wrap;
+        /* Permet des retours à la ligne automatiques */
+        animation: none;
+        /* Désactive l'animation sur les téléphones */
+        border-right: none;
+        /* Supprime le caret de clignotement */
+    }
+    .app-logo {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+.custom-progress-bar {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 20px;
+    margin-top: 20px;
+}
+
+.custom-progress-bar .progress {
+    width: 0;
+    height: 100%;
+    background-color: #4a4a77;
+    animation: loadProgress 6s linear forwards;
+}
+
+
+/* Media query pour la rotation de l'iPad Pro */
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .loading-container {
+        height: 100vh;
+        /* Assurer que le conteneur prenne toute la hauteur en mode paysage */
+    }
+    .loading-content {
+        max-width: 800px;
+        /* Augmenter la largeur max pour un affichage optimal en paysage */
+    }
+}

@@ -27,6 +27,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(HttpClientModule, CommonModule),
     AuthService,
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, provideAnimationsAsync()
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, provideAnimationsAsync(), provideAnimationsAsync()
   ]
 }).catch(err => console.error(err));

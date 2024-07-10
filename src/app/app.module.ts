@@ -2,8 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
-
+// import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TableService } from './services/table.service';
 import { routes } from './app.routes';
@@ -31,11 +31,21 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { TableFormComponent } from './components/table-form/table-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { LoadingComponent } from './components/loading/loading.component';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+// import { Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+// import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
   ],
   imports: [
+    ResetPasswordComponent,
     AppComponent,
     CategoryFormComponent,
     TableFormComponent,
@@ -59,6 +69,10 @@ import { ProductFormComponent } from './components/product-form/product-form.com
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    LoadingComponent,LoginComponent,
+    ChangePasswordComponent,
+
     RouterModule.forRoot(routes)
   ],
   providers: [TableService, UtilisateurService,ProduitService,CategorieService,AuthService,UserService],

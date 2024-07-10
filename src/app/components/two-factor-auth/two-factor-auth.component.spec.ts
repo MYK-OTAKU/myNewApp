@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardComponent } from './dashboard.component';
+import { TwoFactorAuthComponent } from './two-factor-auth.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('TwoFactorAuthComponent', () => {
+  let component: TwoFactorAuthComponent;
+  let fixture: ComponentFixture<TwoFactorAuthComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DashboardComponent]
+      imports: [TwoFactorAuthComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(DashboardComponent);
+    
+    fixture = TestBed.createComponent(TwoFactorAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

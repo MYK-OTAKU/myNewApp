@@ -1,24 +1,26 @@
-<!-- src/app/components/login/login.component.html -->
-<div class="login-container">
+<div class="login-container container-fluid d-flex justify-content-center align-items-center">
     <div class="login-box">
-        <div class="login-top">
-            <img src="../../../assets/images/icons8-user-96.png" alt=" User Icon " class="user-icon ">
+        <div class="login-top text-center">
+            <img src="../../../assets/images/icons8-user-96.png" alt="User Icon" class="user-icon img-fluid">
         </div>
-        <div class="login-main ">
-            <h2>Connexion</h2>
-            <form (ngSubmit)="onSubmit() ">
-                <div class="form-group ">
-                    <label for="username ">Nom d'utilisateur</label>
-                    <input type="text " id="username " [(ngModel)]="username " name="username " required>
+        <div class="login-main p-4">
+            <h2 class="text-center mb-3">Connexion</h2>
+            <form *ngIf="!twoFactorRequired; else twoFactorTemplate" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-3">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" [(ngModel)]="username" name="username" class="form-control" placeholder="Entrez votre nom d'utilisateur" required>
                 </div>
-                <div class="form-group ">
-                    <label for="password ">Mot de passe</label>
-                    <input type="password " id="password " [(ngModel)]="password " name="password " required>
+                <div class="form-group mb-4">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Entrez votre mot de passe" required>
                 </div>
-                <button type="submit ">Se connecter</button>
-                <p *ngIf="loginFailed " class="error-message ">Nom d'utilisateur ou mot de passe incorrect</p>
-                <p *ngIf="loginFailed " class="forgot-password " (click)="requestPasswordReset() ">Mot de passe oublié ?</p>
+                <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                <p *ngIf="loginFailed" class="error-message mt-3 text-center text-danger">Nom d'utilisateur ou mot de passe incorrect</p>
+                <p class="forgot-password mt-2 text-center text-primary" (click)="navigateToResetPassword()">Mot de passe oublié ?</p>
             </form>
+            <ng-template #twoFactorTemplate>
+                <app-two-factor-auth [token]="twoFactorToken" [qrCodeUrl]="qrCodeUrl"></app-two-factor-auth>
+            </ng-template>
         </div>
     </div>
 </div>

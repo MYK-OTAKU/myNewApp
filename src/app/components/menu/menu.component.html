@@ -1,47 +1,25 @@
-<!-- src/app/components/menu/menu.component.html -->
-<nav class="navbar navbar-expand-md">
+<nav class="navbar">
     <div class="container-fluid mx-2">
         <div class="navbar-header">
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggle-navbar" aria-controls="toggle-navbar" aria-expanded="false" aria-label="Toggle navigation" id="menu-toggle">
-              <i class="bi bi-toggle-off"></i>
-            </button>
-
-
-
-            <a class="navbar-brand" href="#">Admin<span class="main-color">Space</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="toggle-navbar">
-            <ul class="navbar-nav ms-auto">
-                <li>
-                    <button mat-button [matMenuTriggerFor]="belowMenu" class="nav-link" saria-label="Menu">Paramètres</button>
-                    <mat-menu #belowMenu="matMenu" yPosition="below">
-                        <button mat-menu-item aria-label="Mon Compte">Mon Compte</button>
-                        <button mat-menu-item aria-label="Aide">Aide</button>
-                        <button mat-menu-item aria-label="Notification">Notification</button>
-                        <button (click)="logout()" mat-menu-item aria-label="Déconnexion">Déconnexion</button>
-                    </mat-menu>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Paramètres
-          </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" aria-label="Mon Compte">Mon Compte</a></li>
-                        <li><a class="dropdown-item" aria-label="Notification">Notification</a></li>
-                        <li><a class="dropdown-item" aria-label="Aide">Aide</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" (click)="logout()" aria-label="Déconnexion">Déconnexion</a></li>
-                    </ul>
-                </li>
-                <li class="hide-mobile1 nav-item">
-                    <button class="nav-link toggle-sidebar" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
-            <i class="uil-bars show-side-btn"></i>
+            <button class="nav-link toggle-sidebar" (click)="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg xmlns="http://www.w3.org/2000/svg" *ngIf="!sidebarVisible" alt="Menu Icon" width="24" height="24" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+                  <path d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" *ngIf="sidebarVisible" alt="Close Icon" width="24" height="24" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+                  <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8"/>
+              </svg>
           </button>
-                </li>
-            </ul>
+            <a class="navbar-brand">Admin<span class="main-color">Space</span></a>
+        </div>
+        <div class="navbar-nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" (click)="toggleDropdown()" aria-label="Menu" id="dropdownMenuLink">Mon Compte</a>
+                <div #dropdownMenu class="dropdown-menu" [class.show]="dropdownVisible" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#" aria-label="Aide">Aide</a>
+                    <a class="dropdown-item" href="#" aria-label="Notification">Notification</a>
+                    <a class="dropdown-item" href="#" (click)="logout()" aria-label="Déconnexion">Déconnexion</a>
+                </div>
+            </li>
         </div>
     </div>
 </nav>

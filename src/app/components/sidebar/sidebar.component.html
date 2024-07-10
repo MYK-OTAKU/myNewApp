@@ -1,7 +1,6 @@
-<!-- src/app/components/sidebar/sidebar.component.html -->
-<aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
-    <div class="sidebar-header d-flex flex-column justify-content-center align-items-center px-3 py-4">
-        <img class="img-fluid imglogo mb-2" width="50%" src="../../../assets/images/DD.png" alt="Logo">
+<aside class="sidebar" [class.sidebar-hidden]="!sidebarVisible">
+    <div class="sidebar-header">
+        <img class="imglogo" src="../../../assets/images/DD.png" alt="Logo">
         <div class="text-center">
             <h5 class="fs-6 mb-0">
                 <a class="text-decoration-none text-white" href="#">{{ user.prenom }} {{ user.nom }}</a>
@@ -9,14 +8,18 @@
             <p class="mt-1 mb-0 text-white">Admin</p>
         </div>
     </div>
-    <ul class="categories list-unstyled mt-3">
-        <li routerLink="/dashboard/home"><i class="uil-estate fa-fw"></i><a> Accueil</a></li>
-        <li routerLink="/dashboard/categories"><i class="uil-folder"></i><a> Catégories</a></li>
-        <li routerLink="/dashboard/produits"><i class="uil-box"></i><a> Produits</a></li>
-        <li routerLink="/dashboard/tables"><i class="uil-table"></i><a routerLink="/dashboard/tables"> Tables</a></li>
-        <li routerLink="/dashboard/staff"><i class="uil-users-alt"></i><a> Staff</a></li>
-        <li routerLink="/POS"><i class="uil-credit-card"></i><a> Terminal de vente</a></li>
-        <li routerLink="/dashboard/kitchen"><i class="uil-utensils-alt"></i><a> Cuisine</a></li>
-        <li routerLink="/dashboard/statistics"><i class="uil-chart-line"></i><a> Statistique</a></li>
+    <ul class="categories">
+        <li routerLinkActive="active" routerLink="/dashboard/home"><i class="uil uil-estate"></i><a> Accueil</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/categories"><i class="uil uil-folder"></i><a> Catégories</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/produits"><i class="uil uil-box"></i><a> Produits</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/tables"><i class="uil uil-table"></i><a> Tables</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/staff"><i class="uil uil-users-alt"></i><a> Staff</a></li>
+        <li routerLinkActive="active" routerLink="/POS"><i class="uil uil-credit-card"></i><a> Terminal de vente</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/kitchen"><i class="uil uil-utensils-alt"></i><a> Cuisine</a></li>
+        <li routerLinkActive="active" routerLink="/dashboard/statistics"><i class="uil uil-chart-line"></i><a> Statistique</a></li>
+        <!-- Paramètres visibles uniquement sur mobile -->
+        <li class="mobile-only" routerLinkActive="active" routerLink="/dashboard/parametres"><i class="uil uil-cog"></i><a> Paramètre</a></li>
     </ul>
+    <!-- Bouton Déconnexion visible uniquement sur mobile -->
+    <button class="logout mobile-only" (click)="logout()">Déconnexion</button>
 </aside>

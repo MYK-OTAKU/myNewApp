@@ -1,14 +1,16 @@
 .sidebar {
-    background-color: #323759;
+    background-color: #4a4a77;
     color: white;
-    width: 17vw;
     height: 100vh;
-    position: fixed;
     top: 0;
     left: 0;
     overflow-y: auto;
     overflow-x: hidden;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+.sidebar-hidden {
+    transform: translateX(-100%);
 }
 
 .sidebar-header {
@@ -22,15 +24,11 @@
 .imglogo {
     background-size: cover;
     object-fit: cover;
-}
-
-.sidebar-header img {
-    object-fit: cover;
     width: 50%;
     margin-bottom: 15px;
 }
 
-.sidebar-header .text-center {
+.text-center {
     text-align: center;
 }
 
@@ -39,8 +37,6 @@
     padding: 0;
     margin: 0;
     margin-top: 20px;
-    overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 .categories li {
@@ -65,27 +61,33 @@
 }
 
 .categories a:hover {
-    color: #a0a0c5;
+    color: #41416a;
+}
+
+.active {
+    border-bottom: 1px solid #444;
+    border-top: 1px solid #444;
+    background-color: #f5f5f5;
+    color: #41416a !important;
 }
 
 .categories li:hover {
-    background-color: #41416a;
+    border-bottom: 1px solid #444;
+    border-top: 1px solid #444;
+    background-color: #f5f5f5;
+    color: #41416a !important;
     transform: scale(1.05);
 }
 
-@media (max-width: 900px) and (min-width: 651px) {
-    .sidebar {
-        width: 25vw;
-        position: relative;
-    }
-    .sidebar-hidden {
-        transform: translateX(-100%);
-    }
+
+/* Styles pour les éléments mobiles uniquement */
+
+.mobile-only {
+    display: none;
 }
 
 @media (max-width: 650px) {
     .sidebar {
-        width: 70vw;
         position: fixed;
         z-index: 10;
         height: 100%;
@@ -96,5 +98,21 @@
     }
     .sidebar:not(.sidebar-hidden) {
         transform: translateX(0);
+    }
+    .mobile-only {
+        display: block;
+    }
+    .logout {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: calc(100% - 20px);
+    }
+    .logout:hover {
+        background-color: #d32f2f;
     }
 }

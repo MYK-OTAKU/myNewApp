@@ -1,17 +1,14 @@
-<div class="all">
-    <button class="toggle-sidebar" (click)="toggleSidebar()" title="Toggle Sidebar">
-      <i class="uil-bars"></i>
-    </button>
-    <div class="sidebar" [class.sidebar-hidden]="!sidebarVisible">
+<div class="dashboard">
+    <div class="sidebar" *ngIf="sidebarVisible">
         <app-sidebar></app-sidebar>
     </div>
-    <div class="main-container" [class.full-width]="!sidebarVisible">
-        <div class="menu">
+    <div class="content" [class.full-width]="!sidebarVisible">
+        <div class="nav">
             <app-menu></app-menu>
         </div>
-        <div class="maincontent">
+        <div class="main-content mmaincontent">
             <router-outlet></router-outlet>
         </div>
     </div>
+    <div class="overlay" [class.visible]="sidebarVisible && isMobile" (click)="toggleSidebar()"></div>
 </div>
-

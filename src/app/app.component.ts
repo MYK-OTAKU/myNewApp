@@ -8,16 +8,19 @@ import { MaincontentComponent } from './components/maincontent/maincontent.compo
 import { SidebarService } from './services/sidebar.service';
 import { AuthService } from './services/auth.service';
 import { MessageBoxComponent } from './message-box/message-box.component';
+import { LoginComponent } from './components/login/login.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
+  RouterOutlet,
     CommonModule,
     SidebarComponent,
     MenuComponent,
-    MaincontentComponent,
+    MaincontentComponent,LoginComponent,ChangePasswordComponent,ResetPasswordComponent
     // MessageBoxComponent
   ],
   templateUrl: './app.component.html',

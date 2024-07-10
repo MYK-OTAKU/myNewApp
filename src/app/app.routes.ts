@@ -12,6 +12,9 @@ import { ViewTemplateComponent } from './components/view-template/view-template.
 import { ProduitsComponent } from './components/produits/produits.component';
 import { UtilisateursComponent } from './components/utilisateur/utilisateur.component';
 import { PosTerminalComponent } from './pos-terminal/pos-terminal.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -31,6 +34,9 @@ export const routes: Routes = [
       { path: '**', redirectTo: 'home' }
     ]
   },
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'dashboard2', component: Dashboard2Component },
+  { path: 'reset-password/:token', component: ChangePasswordComponent },
   { path: 'POS', component: PosTerminalComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' }
