@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { SidebarService } from './../../services/sidebar.service';
-import { AuthService } from '../../services/auth.service';
+import { SidebarService } from '../../services/sidebar.service';
+import { AuthService } from '../../services/authentifiaction/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

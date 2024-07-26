@@ -6,11 +6,12 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MaincontentComponent } from './components/maincontent/maincontent.component';
 import { SidebarService } from './services/sidebar.service';
-import { AuthService } from './services/auth.service';
-import { MessageBoxComponent } from './message-box/message-box.component';
-import { LoginComponent } from './components/login/login.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AuthService } from './services/authentifiaction/auth.service';
+
+import { LoginComponent } from './components/form/login/login.component';
+import { ChangePasswordComponent } from './components/form/change-password/change-password.component';
+import { ResetPasswordComponent } from './components/form/reset-password/reset-password.component';
+import { MessageBoxComponent } from './components/message-box/message-box.component';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     CommonModule,
     SidebarComponent,
     MenuComponent,
-    MaincontentComponent,LoginComponent,ChangePasswordComponent,ResetPasswordComponent
+    MaincontentComponent,LoginComponent,ChangePasswordComponent,ResetPasswordComponent, MessageBoxComponent
     // MessageBoxComponent
   ],
   templateUrl: './app.component.html',

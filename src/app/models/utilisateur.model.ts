@@ -1,4 +1,3 @@
-// src/app/models/utilisateur.model.ts
 export interface Utilisateur {
   id?: number;
   nom: string;
@@ -10,5 +9,9 @@ export interface Utilisateur {
   numeroTel?: string;
   adresse?: string;
   recette?: number;
-
+  twoFactorEnabled?: boolean;
+  twoFactorSecret?: string;
+  qrScanned?: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }

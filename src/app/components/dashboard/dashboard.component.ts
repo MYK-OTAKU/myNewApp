@@ -5,7 +5,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MenuComponent } from '../menu/menu.component';
 import { MaincontentComponent } from '../maincontent/maincontent.component';
 import { SidebarService } from '../../services/sidebar.service';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/authentifiaction/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 

@@ -1,0 +1,15 @@
+<div class="message-box-overlay" *ngIf="isVisible">
+    <div class="message-box">
+        <div class="message-box-header">
+            <h2>{{ title }}</h2>
+            <button class="close-button" (click)="onClose()">×</button>
+        </div>
+        <div class="message-box-body">
+            <p>{{ message }}</p>
+        </div>
+        <div class="message-box-footer">
+            <button class="cancel-button" *ngIf="type === 'confirmation'" (click)="onCancel()">Cancel</button>
+            <button class="confirm-button" (click)="onConfirm()">OK</button>
+        </div>
+    </div>
+</div>

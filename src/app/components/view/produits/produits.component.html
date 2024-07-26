@@ -1,0 +1,61 @@
+<div class="view-container">
+    <div class="top-section">
+        <div class="actions">
+            <div class="action-item">
+                <label class="addbtn" for="add-button">Ajouter un Produit</label>
+                <button id="add-button" (click)="addProduit()">+</button>
+                <app-product-form #productForm (productUpdated)="onProductUpdated()"></app-product-form>
+            </div>
+            <div class="action-item action-item-special">
+                <label class="search" for="search-input">Rechercher</label>
+                <input type="text" id="search-input" placeholder="Rechercher ici" class="search-input" [(ngModel)]="searchTerm" (input)="searchProduits()">
+            </div>
+        </div>
+    </div>
+    <div class="main-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th (click)="sortBy('nom')">Nom
+                        <span *ngIf="sortKey === 'nom' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'nom' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('description')">Description
+                        <span *ngIf="sortKey === 'description' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'description' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('prix')">Prix
+                        <span *ngIf="sortKey === 'prix' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'prix' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th (click)="sortBy('quantiteStock')">Quantité en Stock
+                        <span *ngIf="sortKey === 'quantiteStock' && sortDirection === 'asc'">&#9650;</span>
+                        <span *ngIf="sortKey === 'quantiteStock' && sortDirection === 'desc'">&#9660;</span>
+                    </th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let produit of filteredProduits; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ produit.nom }}</td>
+                    <td>{{ produit.description }}</td>
+                    <td>{{ produit.prix }}</td>
+                    <td>{{ produit.quantiteStock }}</td>
+                    <td>{{ produit.Categorie?.nom }}</td>
+                    <td class="action-buttons">
+                        <button (click)="editProduit(produit)">
+                        <img src="../../../../assets/images/icons8-pencil-96.png" alt="Edit" />
+                      </button>
+                        <button (click)="deleteProduit(produit)">
+                        <img src="../../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
+                      </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="scroll-top-button" (click)="scrollToTop()">↑</button>
+</div>

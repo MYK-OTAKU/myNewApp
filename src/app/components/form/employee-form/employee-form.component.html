@@ -1,0 +1,67 @@
+<div class="modal" *ngIf="showModal" (click)="closeModal()">
+    <div class="modal-content form-container" (click)="$event.stopPropagation()">
+        <div class="modal-header form-header">
+            <img src="../../../assets/images/icons8-user-96.png" alt="Logo" class="logo">
+            <h2>{{ isEditMode ? 'Modifier Employé(e)' : 'Ajouter Employé(e)' }}</h2>
+        </div>
+        <div class="modal-body form-body">
+            <form (ngSubmit)="saveUtilisateur()">
+                <div class="form-row">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" class="form-control" [(ngModel)]="utilisateur.nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" class="form-control" [(ngModel)]="utilisateur.prenom" name="prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Rôle</label>
+                            <select id="role" class="form-control" [(ngModel)]="utilisateur.role" name="role" required>
+                              <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nomUtilisateur">Nom Utilisateur</label>
+                            <input type="text" id="nomUtilisateur" class="form-control" [(ngModel)]="utilisateur.nomUtilisateur" name="nomUtilisateur" required>
+                        </div>
+                    </div>
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="motDePasse">Mot de Passe</label>
+                            <input type="password" id="motDePasse" class="form-control" [(ngModel)]="utilisateur.motDePasse" name="motDePasse" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" [(ngModel)]="utilisateur.email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroTel">Numéro de Téléphone</label>
+                            <input type="text" id="numeroTel" class="form-control" [(ngModel)]="utilisateur.numeroTel" name="numeroTel">
+                        </div>
+                        <div class="form-group">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" id="adresse" class="form-control" [(ngModel)]="utilisateur.adresse" name="adresse">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recette">Recette</label>
+                    <input type="number" id="recette" class="form-control" [(ngModel)]="utilisateur.recette" name="recette" [disabled]="utilisateur.role !== 'serveur'">
+                </div>
+                <div class="form-group">
+                    <label for="twoFactorEnabled">Activer l'authentification à deux facteurs</label>
+                    <select id="twoFactorEnabled" class="form-control" [(ngModel)]="utilisateur.twoFactorEnabled" name="twoFactorEnabled" required>
+                      <option [value]="true">Oui</option>
+                      <option [value]="false">Non</option>
+                  </select>
+                </div>
+                <div class="form-actions modal-footer">
+                    <button type="submit" class="btn btn-save1">{{ isEditMode ? 'Modifier' : 'Ajouter' }}</button>
+                    <button type="button" class="btn btn-close1" (click)="closeModal()">Fermer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

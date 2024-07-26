@@ -1,0 +1,83 @@
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f4f4f4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.app-logo {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.message-container {
+    margin-bottom: 20px;
+}
+
+.welcome-message {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.custom-progress-bar {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0;
+    height: 10px;
+    background-color: #3f51b5;
+    animation: progress-animation 2s linear infinite;
+}
+
+@keyframes progress-animation {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .app-logo {
+        max-width: 80px;
+    }
+    .welcome-message {
+        font-size: 1em;
+    }
+    .custom-progress-bar {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-logo {
+        max-width: 60px;
+    }
+    .welcome-message {
+        font-size: 0.8em;
+    }
+    .custom-progress-bar {
+        width: 100%;
+    }
+}

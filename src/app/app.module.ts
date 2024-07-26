@@ -9,40 +9,45 @@ import { TableService } from './services/table.service';
 import { routes } from './app.routes';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ViewTemplateComponent } from './components/view-template/view-template.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { KitchenComponent } from './components/kitchen/kitchen.component';
-import { ProduitsComponent } from './components/produits/produits.component';
+import { ViewTemplateComponent } from './components/view/view-template/view-template.component';
+import { CategoriesComponent } from './components/view/categories/categories.component';
+import { KitchenComponent } from './components/view/kitchen/kitchen.component';
+import { ProduitsComponent } from './components/view/produits/produits.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material.module';
+import { AngularMaterialModule } from './module/angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
-import { PosTerminalComponent } from './pos-terminal/pos-terminal.component';
-import { MessageBoxComponent } from './message-box/message-box.component';
-import { UtilisateurService } from './services/utilisateur.service';
-import { CategoryFormComponent } from './components/category-form/category-form.component';
-import { ProduitService } from './services/produit.service';
-import { CategorieService } from './services/categorie.service';
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { TableFormComponent } from './components/table-form/table-form.component';
-import { ProductFormComponent } from './components/product-form/product-form.component';
-import { LoadingComponent } from './components/loading/loading.component';
+import { EmployeeFormComponent } from './components/form/employee-form/employee-form.component';
+import { PosTerminalComponent } from './components/view/pos-terminal/pos-terminal.component';
+import { MessageBoxComponent } from './components/message-box/message-box.component';
+import { UtilisateurService } from './services/utilisateurs/utilisateur.service';
+import { CategoryFormComponent } from './components/form/category-form/category-form.component';
+import { ProduitService } from './services/produits/produit.service';
+import { CategorieService } from './services/categories/categorie.service';
+import { AuthService } from './services/authentifiaction/auth.service';
+import { UserSercice } from './services/utilisateurs/user.service';
+import { TableFormComponent } from './components/form/table-form/table-form.component';
+import { ProductFormComponent } from './components/form/product-form/product-form.component';
+import { LoadingComponent } from './components/layouts/loading/loading.component';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { LoginComponent } from './components/form/login/login.component';
+import { ResetPasswordComponent } from './components/form/reset-password/reset-password.component';
+import { ChangePasswordComponent } from './components/form/change-password/change-password.component';
 // import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AuthGuard } from './services/auth.guard';
+import { AuthGuard } from './services/authentifiaction/auth.guard';
+
+import { StaffComponent } from './components/view/staff/staff.component';
+import { UnauthorizedComponent } from './components/layouts/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
+    UnauthorizedComponent,
+
   ],
   imports: [
     ResetPasswordComponent,
@@ -50,7 +55,7 @@ import { AuthGuard } from './services/auth.guard';
     CategoryFormComponent,
     TableFormComponent,
     ProductFormComponent,
-    // MessageBoxComponent,
+     MessageBoxComponent,
     SidebarComponent,
     DashboardComponent,
     ViewTemplateComponent,
@@ -72,10 +77,11 @@ import { AuthGuard } from './services/auth.guard';
     MatProgressSpinnerModule,
     LoadingComponent,LoginComponent,
     ChangePasswordComponent,
+    StaffComponent,
 
     RouterModule.forRoot(routes)
   ],
-  providers: [TableService, UtilisateurService,ProduitService,CategorieService,AuthService,UserService],
+  providers: [TableService, UtilisateurService,ProduitService,CategorieService,AuthService,UserSercice],
   bootstrap: []
 })
 export class AppModule { }
