@@ -32,7 +32,8 @@ export const routes: Routes = [
       { path: 'statistics', component: StatisticsComponent, canActivate: [AuthGuard], data: { roles: ['admin', 'superadmin'] } },
       { path: 'tables', component: ViewTemplateComponent, canActivate: [AuthGuard], data: { roles: ['admin', 'superadmin'] } },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: '**', redirectTo: 'home' }
+      { path: '**', component: NotFoundComponent }
+
     ]
   },
   { path: 'POS', component: PosTerminalComponent, canActivate: [AuthGuard], data: { roles: ['admin', 'superadmin', 'serveur'] } },

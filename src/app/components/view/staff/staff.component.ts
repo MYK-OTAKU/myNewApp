@@ -11,7 +11,7 @@ import { MessageBoxComponent } from '../../message-box/message-box.component';
 @Component({
   selector: 'app-staff',
   standalone: true,
-  imports: [CommonModule, FormsModule, EmployeeFormComponent, ReactiveFormsModule, MatIconModule, MatButtonModule, MessageBoxComponent],
+  imports: [CommonModule, FormsModule, EmployeeFormComponent, ReactiveFormsModule, MatIconModule, MatButtonModule, ],
   templateUrl: './staff.component.html',
   styleUrls: ['./staff.component.css']
 })

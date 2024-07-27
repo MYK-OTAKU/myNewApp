@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/authentifiaction/auth.service';
 import { TwoFactorAuthComponent } from '../two-factor-auth/two-factor-auth.component';
 import { LoadingComponent } from '../../layouts/loading/loading.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule, TwoFactorAuthComponent, LoadingComponent],
+  imports: [FormsModule, CommonModule, TwoFactorAuthComponent, LoadingComponent, MatProgressSpinnerModule, MatProgressBarModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -41,11 +42,16 @@ export class LoginComponent {
 
   showLoading(response: any) {
     this.isLoading = true;
+    localStorage.setItem('auth_token', response.token);
+
+    // Garder le chargement visible pendant une certaine durée
     setTimeout(() => {
-      this.isLoading = false;
-      localStorage.setItem('auth_token', response.token);
       this.router.navigate(['/dashboard']);
-    }, 2000); // Temps de chargement simulé, ajustez selon vos besoins
+    }, 1800); // Naviguer immédiatement en arrière-plan
+
+    setTimeout(() => {
+      this.isLoading = true;
+    }, 1999); // Durée du délai en millisecondes
   }
 
   navigateToResetPassword() {

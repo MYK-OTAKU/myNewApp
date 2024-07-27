@@ -21,7 +21,7 @@ import { MessageBoxComponent } from './components/message-box/message-box.compon
     CommonModule,
     SidebarComponent,
     MenuComponent,
-    MaincontentComponent,LoginComponent,ChangePasswordComponent,ResetPasswordComponent, MessageBoxComponent
+    MaincontentComponent,LoginComponent,ChangePasswordComponent,ResetPasswordComponent,
     // MessageBoxComponent
   ],
   templateUrl: './app.component.html',

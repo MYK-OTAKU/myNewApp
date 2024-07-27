@@ -1,13 +1,16 @@
+// src/app/components/view/categories/categories.component.ts
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CategorieService } from '../../../services/categories/categorie.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CategoryFormComponent } from '../../form/category-form/category-form.component';
+import { MessageBoxService } from '../../../services/message-box.service';
+import { MessageBoxModule } from '../../../module/message-box/message-box.module';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, FormsModule, CategoryFormComponent],
+  imports: [CommonModule, FormsModule, CategoryFormComponent, MessageBoxModule],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
@@ -21,7 +24,7 @@ export class CategoriesComponent implements OnInit {
 
   @ViewChild('categoryForm') categoryForm!: CategoryFormComponent;
 
-  constructor(private categorieService: CategorieService) {}
+  constructor(private categorieService: CategorieService, private messageBoxService: MessageBoxService) {}
 
   ngOnInit(): void {
     this.loadCategories();
@@ -34,7 +37,8 @@ export class CategoriesComponent implements OnInit {
         this.filteredCategories = data;
       },
       error: (error) => {
-        console.error('Error fetching categories:', error);
+        console.error('Erreur lors du chargement des catégories', error);
+        this.messageBoxService.showMessage('Erreur lors du chargement des catégories', 'error');
       }
     });
   }
@@ -48,19 +52,25 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory(category: any): void {
-    this.categorieService.deleteCategory(category.id).subscribe({
-      next: () => {
-        console.log('Category deleted successfully');
-        this.loadCategories(); // Recharger les données après la suppression
-      },
-      error: (error) => {
-        console.error('Error deleting category:', error);
+    this.messageBoxService.showConfirmation('Êtes-vous sûr de vouloir supprimer cette catégorie ?', (result: boolean) => {
+      if (result) {
+        this.categorieService.deleteCategory(category.id).subscribe({
+          next: () => {
+            this.messageBoxService.showMessage('Catégorie supprimée avec succès', 'success');
+            this.loadCategories(); // Recharger les données après la suppression
+          },
+          error: (error) => {
+            console.error('Erreur lors de la suppression de la catégorie', error);
+            this.messageBoxService.showMessage('Erreur lors de la suppression de la catégorie', 'error');
+          }
+        });
       }
     });
   }
 
   onCategoryUpdated(): void {
-    this.loadCategories(); // Recharger les données après la mise à jour ou la création
+    this.loadCategories();
+    this.messageBoxService.showMessage('Catégorie mise à jour avec succès', 'success');
   }
 
   @HostListener('window:scroll', [])

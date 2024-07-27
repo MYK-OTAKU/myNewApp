@@ -1,9 +1,9 @@
 <div class="login-container container-fluid d-flex justify-content-center align-items-center">
-    <div class="login-box">
+    <div class="login-box" *ngIf="!isLoading; else loadingTemplate">
         <div class="login-top text-center">
             <img src="../../../assets/images/icons8-user-96.png" alt="User Icon" class="user-icon img-fluid">
         </div>
-        <div class="login-main p-4" *ngIf="!isLoading; else loadingTemplate">
+        <div class="login-main p-4">
             <h2 class="text-center mb-3">Connexion</h2>
             <form *ngIf="!twoFactorRequired; else twoFactorTemplate" (ngSubmit)="onSubmit()">
                 <div class="form-group mb-3">
@@ -22,8 +22,8 @@
                 <app-two-factor-auth [token]="twoFactorToken" [qrCodeUrl]="qrCodeUrl" (success)="onTwoFactorSuccess($event)"></app-two-factor-auth>
             </ng-template>
         </div>
-        <ng-template #loadingTemplate>
-            <app-loading></app-loading>
-        </ng-template>
     </div>
+    <ng-template #loadingTemplate>
+        <app-loading></app-loading>
+    </ng-template>
 </div>

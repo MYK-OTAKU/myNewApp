@@ -43,6 +43,7 @@ import { AuthGuard } from './services/authentifiaction/auth.guard';
 
 import { StaffComponent } from './components/view/staff/staff.component';
 import { UnauthorizedComponent } from './components/layouts/unauthorized/unauthorized.component';
+import { MessageBoxModule } from './module/message-box/message-box.module';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,6 @@ import { UnauthorizedComponent } from './components/layouts/unauthorized/unautho
     CategoryFormComponent,
     TableFormComponent,
     ProductFormComponent,
-     MessageBoxComponent,
     SidebarComponent,
     DashboardComponent,
     ViewTemplateComponent,
@@ -78,6 +78,7 @@ import { UnauthorizedComponent } from './components/layouts/unauthorized/unautho
     LoadingComponent,LoginComponent,
     ChangePasswordComponent,
     StaffComponent,
+    MessageBoxModule,
 
     RouterModule.forRoot(routes)
   ],

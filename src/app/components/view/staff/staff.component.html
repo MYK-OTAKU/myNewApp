@@ -67,6 +67,4 @@
     </div>
     <button id="scroll-top-button" (click)="scrollToTop()">↑</button>
     <app-employee-form #employeeForm (utilisateurUpdated)="loadUtilisateurs()"></app-employee-form>
-    <app-message-box [type]="messageBoxType" [title]="messageBoxTitle" [message]="messageBoxMessage" [isVisible]="isMessageBoxVisible" (confirm)="handleConfirm()" (cancel)="handleCancel()" (close)="handleClose()">
-    </app-message-box>
 </div>
