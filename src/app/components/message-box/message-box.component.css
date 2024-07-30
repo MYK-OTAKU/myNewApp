@@ -44,6 +44,7 @@
 }
 
 .confirm-buttons button {
+    /* background-color: red; */
     background-color: #32377E;
     /* Couleur pour les boutons de confirmation */
 }

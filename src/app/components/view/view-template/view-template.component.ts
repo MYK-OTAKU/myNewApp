@@ -1,13 +1,16 @@
+// src/app/components/view/view-template/view-template.component.ts
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Ajout de FormsModule
+import { FormsModule } from '@angular/forms';
 import { TableService } from '../../../services/table.service';
 import { TableFormComponent } from '../../form/table-form/table-form.component';
+import { MessageBoxService } from '../../../services/message-box.service';
+import { MessageBoxModule } from '../../../module/message-box/message-box.module';
 
 @Component({
   selector: 'app-view-template',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableFormComponent], // Ajout de FormsModule aux imports
+  imports: [CommonModule, FormsModule, TableFormComponent, MessageBoxModule],
   templateUrl: './view-template.component.html',
   styleUrls: ['./view-template.component.css']
 })
@@ -18,7 +21,7 @@ export class ViewTemplateComponent implements OnInit {
   searchTerm: string = '';
   showScrollTopButton = false;
 
-  constructor(private tableService: TableService) {}
+  constructor(private tableService: TableService, private messageBoxService: MessageBoxService) {}
 
   ngOnInit(): void {
     this.loadTables();
@@ -31,7 +34,8 @@ export class ViewTemplateComponent implements OnInit {
         this.filteredTables = data;
       },
       error: (error) => {
-        console.error('Error fetching tables:', error);
+        console.error('Erreur lors du chargement des tables:', error);
+        this.messageBoxService.showMessage('Erreur lors du chargement des tables', 'error');
       }
     });
   }
@@ -45,15 +49,25 @@ export class ViewTemplateComponent implements OnInit {
   }
 
   deleteTable(table: any): void {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette table?')) {
-      this.tableService.deleteTable(table.id).subscribe(() => {
-        this.loadTables(); // Recharger les données après la suppression
-      });
-    }
+    this.messageBoxService.showConfirmation('Êtes-vous sûr de vouloir supprimer cette table ?', (result: boolean) => {
+      if (result) {
+        this.tableService.deleteTable(table.id).subscribe({
+          next: () => {
+            this.messageBoxService.showMessage('Table supprimée avec succès', 'success');
+            this.loadTables(); // Recharger les données après la suppression
+          },
+          error: (error) => {
+            console.error('Erreur lors de la suppression de la table', error);
+            this.messageBoxService.showMessage('Erreur lors de la suppression de la table', 'error');
+          }
+        });
+      }
+    });
   }
 
   onTableUpdated(): void {
-    this.loadTables(); // Recharger les données après la mise à jour ou la création
+    this.loadTables();
+    this.messageBoxService.showMessage('Table mise à jour avec succès', 'success');
   }
 
   searchTables(): void {

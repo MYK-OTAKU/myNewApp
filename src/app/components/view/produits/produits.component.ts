@@ -1,14 +1,17 @@
+// src/app/components/view/produits/produits.component.ts
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ProduitService } from '../../../services/produits/produit.service';
 import { Produit } from '../../../models/produit.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductFormComponent } from '../../form/product-form/product-form.component';
+import { MessageBoxService } from '../../../services/message-box.service';
+import { MessageBoxModule } from '../../../module/message-box/message-box.module';
 
 @Component({
   selector: 'app-produits',
   standalone: true,
-  imports: [CommonModule, FormsModule, ProductFormComponent],
+  imports: [CommonModule, FormsModule, ProductFormComponent, MessageBoxModule],
   templateUrl: './produits.component.html',
   styleUrls: ['./produits.component.css']
 })
@@ -22,7 +25,7 @@ export class ProduitsComponent implements OnInit {
 
   @ViewChild('productForm') productForm!: ProductFormComponent;
 
-  constructor(private produitService: ProduitService) {}
+  constructor(private produitService: ProduitService, private messageBoxService: MessageBoxService) {}
 
   ngOnInit(): void {
     this.loadProduits();
@@ -35,7 +38,8 @@ export class ProduitsComponent implements OnInit {
         this.filteredProduits = data;
       },
       error: (error) => {
-        console.error('Error fetching produits:', error);
+        console.error('Erreur lors du chargement des produits:', error);
+        this.messageBoxService.showMessage('Erreur lors du chargement des produits', 'error');
       }
     });
   }
@@ -49,15 +53,25 @@ export class ProduitsComponent implements OnInit {
   }
 
   deleteProduit(produit: Produit): void {
-    if (confirm('Êtes-vous sûr de vouloir supprimer ce produit?')) {
-      this.produitService.deleteProduit(produit.id).subscribe(() => {
-        this.loadProduits(); // Recharger les données après la suppression
-      });
-    }
+    this.messageBoxService.showConfirmation('Êtes-vous sûr de vouloir supprimer ce produit ?', (result: boolean) => {
+      if (result) {
+        this.produitService.deleteProduit(produit.id).subscribe({
+          next: () => {
+            this.messageBoxService.showMessage('Produit supprimé avec succès', 'success');
+            this.loadProduits(); // Recharger les données après la suppression
+          },
+          error: (error) => {
+            console.error('Erreur lors de la suppression du produit', error);
+            this.messageBoxService.showMessage('Erreur lors de la suppression du produit', 'error');
+          }
+        });
+      }
+    });
   }
 
   onProductUpdated(): void {
-    this.loadProduits(); // Recharger les données après la mise à jour ou la création
+    this.loadProduits();
+    this.messageBoxService.showMessage('Produit mis à jour avec succès', 'success');
   }
 
   @HostListener('window:scroll', [])

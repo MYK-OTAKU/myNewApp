@@ -1,3 +1,4 @@
+<!-- src/app/components/view/produits/produits.component.html -->
 <div class="view-container">
     <div class="top-section">
         <div class="actions">
@@ -47,10 +48,10 @@
                     <td>{{ produit.Categorie?.nom }}</td>
                     <td class="action-buttons">
                         <button (click)="editProduit(produit)">
-                        <img src="../../../../assets/images/icons8-pencil-96.png" alt="Edit" />
+                          <img src="../../../../assets/images/icons8-pencil-96.png" alt="Edit" />
                       </button>
                         <button (click)="deleteProduit(produit)">
-                        <img src="../../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
+                          <img src="../../../../assets/images/icons8-full-recycle-bin-96.png" alt="Delete" />
                       </button>
                     </td>
                 </tr>
@@ -58,4 +59,6 @@
         </table>
     </div>
     <button id="scroll-top-button" (click)="scrollToTop()">↑</button>
+    <app-message-box></app-message-box>
+    <!-- Ajouter ici -->
 </div>

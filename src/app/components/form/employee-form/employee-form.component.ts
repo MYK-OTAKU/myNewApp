@@ -1,3 +1,4 @@
+// src/app/components/form/employee-form/employee-form.component.ts
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -5,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Utilisateur } from '../../../models/utilisateur.model';
 import { UtilisateurService } from '../../../services/utilisateurs/utilisateur.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageBoxService } from '../../../services/message-box.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -34,7 +36,11 @@ export class EmployeeFormComponent implements OnInit {
     qrScanned: false
   };
 
-  constructor(private utilisateurService: UtilisateurService, private router: Router) {}
+  constructor(
+    private utilisateurService: UtilisateurService,
+    private messageBoxService: MessageBoxService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.utilisateurId) {
@@ -44,11 +50,10 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   openModal(utilisateur?: any): void {
-    console.log('openModal called'); // Debugging line
     if (utilisateur) {
       this.isEditMode = true;
       this.utilisateur = { ...utilisateur };
-      this.utilisateurId = utilisateur.id; // Assurez-vous que l'ID est défini ici
+      this.utilisateurId = utilisateur.id;
     } else {
       this.isEditMode = false;
       this.utilisateur = {
@@ -77,10 +82,11 @@ export class EmployeeFormComponent implements OnInit {
     this.utilisateurService.getUtilisateur(id).subscribe({
       next: (data: any) => {
         this.utilisateur = data;
-        this.utilisateurId = data.id; // Assurez-vous que l'ID est défini ici
+        this.utilisateurId = data.id;
       },
       error: (error: any) => {
         console.error('Erreur lors du chargement de l\'utilisateur:', error);
+        this.messageBoxService.showMessage('Erreur lors du chargement de l\'utilisateur', 'error');
       }
     });
   }
@@ -92,22 +98,25 @@ export class EmployeeFormComponent implements OnInit {
           console.log('Utilisateur mis à jour avec succès:', data);
           this.closeModal();
           this.utilisateurUpdated.emit();
+          this.messageBoxService.showMessage('Utilisateur mis à jour avec succès', 'success');
         },
         error: (error: any) => {
           console.error('Erreur lors de la mise à jour de l\'utilisateur:', error);
+          this.messageBoxService.showMessage('Erreur lors de la mise à jour de l\'utilisateur', 'error');
         }
       });
     } else {
-      // Ajoutez un log pour voir les données envoyées
       console.log('Données envoyées pour la création:', this.utilisateur);
       this.utilisateurService.creerUtilisateur(this.utilisateur).subscribe({
         next: (data: Utilisateur) => {
           console.log('Utilisateur créé avec succès:', data);
           this.closeModal();
           this.utilisateurUpdated.emit();
+          this.messageBoxService.showMessage('Utilisateur créé avec succès', 'success');
         },
         error: (error: any) => {
           console.error('Erreur lors de la création de l\'utilisateur:', error);
+          this.messageBoxService.showMessage('Erreur lors de la création de l\'utilisateur', 'error');
         }
       });
     }
