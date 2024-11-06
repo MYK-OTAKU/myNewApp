@@ -1,101 +1,109 @@
 <div class="all">
     <!-- En-tête du POS -->
     <div class="pos-header">
-        <!-- Logo et titre -->
         <div class="logo-title">
             <img src="../../assets/images/icons8-knife-and-fork-64.png" alt="Logo">
             <h1 class="titre">POS</h1>
         </div>
-        <!-- Boutons de l'en-tête -->
         <div class="header-buttons">
             <button class="header-button">
-      <img src="../../assets/images/icons8-add-96w.png" alt="Nouveau"> Nouveau
-    </button>
+              <img src="../../assets/images/icons8-add-96w.png" alt="Nouveau">
+              <span class="text-long">Nouveau</span>
+              <span class="text-short">Nouv.</span>
+          </button>
             <button class="header-button">
-      <img src="../../assets/images/icons8-new-ticket-64.png" alt="En attente"> En attente
-    </button>
+              <img src="../../assets/images/icons8-new-ticket-64.png" alt="En attente">
+              <span class="text-long">En attente</span>
+              <span class="text-short">Att.</span>
+          </button>
             <button class="header-button">
-      <img src="../../assets/images/icons8-bill-90.png" alt="Liste des factures"> Liste des factures
-    </button>
-            <button class="header-button btnkot">
-      <img src="../../assets/images/icons8-chef-hat-j.png" alt="KOT"> KOT
-    </button>
+              <img src="../../assets/images/icons8-bill-90.png" alt="Liste des factures">
+              <span class="text-long">Factures</span>
+              <span class="text-short">Fact.</span>
+          </button>
             <button class="header-button">
-      <img src="../../assets/images/icons8-delivery-100.png" alt="Livraison"> Livraison
-    </button>
+              <img src="../../assets/images/icons8-chef-hat-j.png" alt="KOT">
+              <span class="text-long">KOT</span>
+          </button>
             <button class="header-button">
-      <img src="../../assets/images/icons8-take-away-food-100.png" alt="À emporter"> À emporter
-    </button>
+              <img src="../../assets/images/icons8-delivery-100.png" alt="Livraison">
+              <span class="text-long">Livraison</span>
+              <span class="text-short">Livr.</span>
+          </button>
             <button class="header-button">
-      <img src="../../assets/images/icons8-restaurant-table-90.png" alt="Dîner sur place"> Dîner sur place
-    </button>
+              <img src="../../assets/images/icons8-take-away-food-100.png" alt="À emporter">
+              <span class="text-long">À emporter</span>
+              <span class="text-short">Emp.</span>
+          </button>
+            <button class="header-button">
+              <img src="../../assets/images/icons8-restaurant-table-90.png" alt="Dîner sur place">
+              <span class="text-long">Dîner sur place</span>
+              <span class="text-short">Sur place </span>
+          </button>
         </div>
         <div class="logout-button">
-            <button routerLink="/dashboard/home" href="/dashboard/home" class="headerbtnlogout header-button">
-      <img src="../../assets/images/icons8-shutdown-64.png" alt="Sortir">
-    </button>
+            <button routerLink="/dashboard/home" href="/dashboard/home" class="header-button headerbtnlogout">
+              <img src="../../../../assets/images/icons8-shutdown-48.png" alt="Sortir">
+          </button>
         </div>
     </div>
+
     <!-- Corps principal du POS -->
     <div class="pos-main">
-        <!-- Partie Top -->
         <div class="top-bar">
             <input type="text" class="search-bar" placeholder="Rechercher ici">
         </div>
-        <!-- Partie Main -->
         <div class="main-content">
-            <!-- Catégories de produits -->
             <div class="categories">
                 <ul>
                     <li>
-                        <button class="category-button" (click)="selectCategory(null)">All</button>
+                        <button class="category-button" (click)="selectCategory(null)">Tout</button>
                     </li>
                     <li *ngFor="let category of categories">
                         <button class="category-button" (click)="selectCategory(category.id)">
-                        {{ category.nom }}
-                    </button>
+                          {{ category.nom }}
+                      </button>
                     </li>
                 </ul>
             </div>
-            <!-- Liste des produits -->
             <div class="product-list">
                 <div class="product-card" *ngFor="let produit of filteredProduits" (click)="addProductToSelection(produit)">
                     <img [src]="getImageUrl(produit.imagePrincipale)" alt="{{ produit.nom }}">
                     <h2>{{ produit.nom }}</h2>
                 </div>
-                <!-- Les produits seront récupérés depuis le backend -->
             </div>
-            <!-- Produits sélectionnés -->
             <div class="selected-products">
                 <table>
                     <thead class="tbhead">
                         <tr>
-                            <th>Sr#</th>
-                            <th>Nom</th>
-                            <th>Qte</th>
-                            <th>Prix</th>
-                            <th>Montant</th>
-                            <th></th>
+                            <th class="column-sr">#</th>
+                            <th class="column-name">Nom</th>
+                            <th class="column-qty">Qte</th>
+                            <th class="column-price">Prix</th>
+                            <th class="column-amount">Montant</th>
+                            <th class="column-remove"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let produit of selectedProducts; let i = index">
-                            <td>{{ i + 1 }}</td>
-                            <td>{{ produit.nom }}</td>
-                            <td>
+                            <td class="column-sr">{{ i + 1 }}</td>
+                            <td class="column-name">{{ produit.nom }}</td>
+                            <td class="column-qty">
                                 <input type="number" title="qte" [(ngModel)]="produit.quantiteStock" min="1">
                             </td>
-                            <td>{{ produit.prix | number: '1.2-2' }}</td>
-                            <td>{{ (produit.prix * produit.quantiteStock) | number: '1.2-2' }}</td>
-                            <td>
-                                <button (click)="removeProductFromSelection(produit)">Remove</button>
+                            <td class="column-price">{{ produit.prix | number: '1.2-2' }}</td>
+                            <td class="column-amount">{{ (produit.prix * produit.quantiteStock) | number: '1.2-2' }}</td>
+                            <td class="column-remove">
+                                <button class="remove-button" (click)="removeProductFromSelection(produit)">-</button>
                             </td>
+
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
     <!-- Pied de page du POS -->
     <div class="pos-footer">
         <button class="checkout-button" (click)="checkout()">Valider</button>
