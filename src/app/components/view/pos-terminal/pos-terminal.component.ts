@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';  // Importer FormsModule
   ],
   selector: 'app-pos-terminal',
   templateUrl: './pos-terminal.component.html',
-  styleUrls: ['./pos-terminal.component.css']
+  styleUrls: ['./pos-terminal.component.css','./pos-terminal.component2.css']
 })
 export class PosTerminalComponent implements OnInit {
   categories: Categorie[] = [];
