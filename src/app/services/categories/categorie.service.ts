@@ -9,7 +9,7 @@ import { Categorie } from '../../models/produit.model';
   providedIn: 'root'
 })
 export class CategorieService {
-  private baseUrl = 'http://localhost:3200/api/categories'; // Assurez-vous que l'URL est correcte
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/categories'; // Assurez-vous que l'URL est correcte
 
   constructor(private http: HttpClient) {}
 

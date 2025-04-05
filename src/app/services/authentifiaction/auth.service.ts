@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:3200/api';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/api';
   private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient, private router: Router) {}

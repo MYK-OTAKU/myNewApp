@@ -133,6 +133,6 @@ export class PosTerminalComponent implements OnInit {
   }
 
   getImageUrl(imageName: string | undefined): string {
-    return imageName ? `http://localhost:3200/${imageName}` : 'default-image-path'; // Provide a default image path if needed
+    return imageName ? `'https://rms-production-4a42.up.railway.app/${imageName}` : 'default-image-path'; // Provide a default image path if needed
   }
 }

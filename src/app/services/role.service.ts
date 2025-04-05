@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RoleService {
-  private baseUrl = 'http://localhost:3200/api/roles';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/roles';
 
   constructor(private http: HttpClient) {}
 

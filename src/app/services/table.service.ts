@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TableService {
-  private baseUrl = 'http://localhost:3200/api/tables';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/tables';
 
   constructor(private http: HttpClient) {}
 

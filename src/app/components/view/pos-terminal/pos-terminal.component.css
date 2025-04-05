@@ -233,7 +233,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 0.1px;
-    max-height: 220px;
+    max-height: 210px;
     cursor: pointer;
     transition: transform 0.2s;
 }
