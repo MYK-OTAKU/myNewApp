@@ -7,7 +7,7 @@ import { Commande } from '../../models/commande.model';
   providedIn: 'root'
 })
 export class CommandeService {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/commandes';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/commandes';
 
   constructor(private http: HttpClient) {}
 

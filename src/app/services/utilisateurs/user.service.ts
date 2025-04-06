@@ -9,7 +9,7 @@ import { AuthService } from '../authentifiaction/auth.service';
   providedIn: 'root'
 })
 export class UserSercice {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/utilisateurs';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/utilisateurs';
 
 
   constructor(private http: HttpClient, private authService: AuthService) {}

@@ -8,7 +8,7 @@ import { Produit } from '../../models/produit.model';
   providedIn: 'root'
 })
 export class ProduitService {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/produits';
+  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/produits';
 
   constructor(private http: HttpClient) {}
 

@@ -50,7 +50,7 @@ export class ProductFormComponent implements OnInit {
     if (product) {
       this.isEditMode = true;
       this.product = { ...product };
-      this.selectedImage = product.imagePrincipale ? `http://localhost:3200/${product.imagePrincipale}` : this.defaultImage;
+      this.selectedImage = product.imagePrincipale ? `https://rms-production-4a42.up.railway.app/api/${product.imagePrincipale}` : this.defaultImage;
     } else {
       this.isEditMode = false;
       this.product = {
@@ -76,7 +76,7 @@ export class ProductFormComponent implements OnInit {
     this.productService.getProduit(id).subscribe({
       next: (data: Produit) => {
         this.product = data;
-        this.selectedImage = data.imagePrincipale ? `http://localhost:3200/${data.imagePrincipale}` : this.defaultImage;
+        this.selectedImage = data.imagePrincipale ? `https://rms-production-4a42.up.railway.app/api/${data.imagePrincipale}` : this.defaultImage;
       },
       error: (error: any) => {
         console.error('Erreur lors du chargement du produit:', error);
