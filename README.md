@@ -2,6 +2,8 @@
 
 A web-based restaurant management application designed to help manage menus, orders, and tables more efficiently.
 
+---
+
 ## 🔗 Live Demo
 
 🌐 [Access the app here](https://mohamedyehiyakoita.vercel.app)
@@ -12,6 +14,13 @@ A web-based restaurant management application designed to help manage menus, ord
 The Guest account has **admin access** so feel free to explore all features of the app.
 
 > ⚠️ Note: The app is still under development. Some features might be incomplete or pending refinement.
+
+---
+
+## 🖼️ Screenshot
+
+### 🔐 Login Page
+![Login Page](./screenshots/login-preview.png)
 
 ---
 
@@ -27,7 +36,7 @@ The Guest account has **admin access** so feel free to explore all features of t
 - **Hosting**: Railway
 
 ### Database
-- **Type**: MongoDB (or other, depending on your implementation)
+- **Type**: MongoDB *(or other depending on implementation)*
 
 ---
 
@@ -69,6 +78,7 @@ MyNewApp/
 ├── tailwind.config.js
 
 └── angular.json
+
 
 ---
 
