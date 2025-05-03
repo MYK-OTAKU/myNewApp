@@ -52,3 +52,29 @@ This is a personal project still in development. I'm constantly working on:
 
 ## 📁 Project Structure (Frontend)
 
+MyNewApp/
+├── src/
+│ ├── app/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ ├── services/
+│ └── assets/
+├── tailwind.config.js
+└── angular.json
+
+yaml
+Copier
+Modifier
+
+---
+
+## 📬 Contact
+
+- **GitHub**: [MYK-OTAKU](https://github.com/MYK-OTAKU)
+- **LinkedIn**: [Mohamed Yehiya Koïta](https://www.linkedin.com/in/mohamed-yehiya-koita)
+
+---
+
+## 📝 License
+
+This project is for educational and personal showcase purposes.
