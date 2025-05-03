@@ -53,18 +53,22 @@ This is a personal project still in development. I'm constantly working on:
 ## 📁 Project Structure (Frontend)
 
 MyNewApp/
-├── src/
-│ ├── app/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── services/
-│ └── assets/
-├── tailwind.config.js
-└── angular.json
 
-yaml
-Copier
-Modifier
+├── src/
+
+│ ├── app/
+
+│ │ ├── components/
+
+│ │ ├── pages/
+
+│ │ ├── services/
+
+│ └── assets/
+
+├── tailwind.config.js
+
+└── angular.json
 
 ---
 
