@@ -1,27 +1,54 @@
-# MyNewApp
+# RMS - Restaurant Management System 🍽️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+A web-based restaurant management application designed to help manage menus, orders, and tables more efficiently.
 
-## Development server
+## 🔗 Live Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+🌐 [Access the app here](https://mohamedyehiyakoita.vercel.app)
 
-## Code scaffolding
+🧪 **Test Credentials**  
+- **Username**: `Guest`  
+- **Password**: `123`  
+The Guest account has **admin access** so feel free to explore all features of the app.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+> ⚠️ Note: The app is still under development. Some features might be incomplete or pending refinement.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🧰 Tech Stack
 
-## Running unit tests
+### Frontend
+- **Framework**: Angular
+- **UI Styling**: Tailwind CSS
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express
+- **Hosting**: Railway
 
-## Running end-to-end tests
+### Database
+- **Type**: MongoDB (or other, depending on your implementation)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 🧑‍💻 Features
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Admin login system  
+- Manage restaurant menus and items  
+- Order processing and table tracking  
+- Responsive and user-friendly UI  
+- Protected routes for admin features
+
+---
+
+## 🚧 Work in Progress
+
+This is a personal project still in development. I'm constantly working on:
+- Adding role-based permissions
+- Refining the UI/UX
+- Integrating real-time updates
+
+---
+
+## 📁 Project Structure (Frontend)
+
