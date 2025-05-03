@@ -20,7 +20,7 @@ The Guest account has **admin access** so feel free to explore all features of t
 ## 🖼️ Screenshot
 
 ### 🔐 Login Page
-![Login Page](./screenshots/login-preview.png)
+![Login Page](./screenshots/login-preview.PNG)
 
 ---
 
