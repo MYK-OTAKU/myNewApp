@@ -22,7 +22,7 @@ export class ProductFormComponent implements OnInit {
   categories: Categorie[] = [];
   selectedImage: string | ArrayBuffer | null = null;
   imageFile: File | null = null;
-  defaultImage: string = '${environment.apiUrl}/images/carts.png';
+  defaultImage: string = '../../../assets/images/carts.png';
   product: Produit = {
     id: 0,
     nom: '',
@@ -101,17 +101,7 @@ export class ProductFormComponent implements OnInit {
 
   saveProduct() {
     // Vérifiez si nous sommes en mode édition et si une nouvelle image a été sélectionnée
-    const needsImageUpload = this.imageFile !== null;
-    
-    // Si l'API est hébergée sur Vercel et que nous avons besoin d'uploader une image
-    if (environment.apiUrl.includes('vercel.app') && needsImageUpload) {
-      this.messageBoxService.showMessage(
-        "L'upload d'images n'est pas disponible sur Vercel. Utilisez un service de stockage externe comme Cloudinary ou AWS S3.", 
-        'error'
-      );
-      return;
-    }
-
+   
     const formData = new FormData();
     formData.append('nom', this.product.nom);
     formData.append('description', this.product.description || '');
