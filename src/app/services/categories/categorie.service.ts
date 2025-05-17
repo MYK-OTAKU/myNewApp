@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Categorie } from '../../models/produit.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategorieService {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/categories'; // Assurez-vous que l'URL est correcte
+  private baseUrl = `${environment.apiUrl}/categories`; // Utilisation de l'URL centralisée
 
   constructor(private http: HttpClient) {}
 

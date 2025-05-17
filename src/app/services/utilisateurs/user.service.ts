@@ -4,13 +4,13 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Utilisateur } from '../../models/utilisateur.model';
 import { AuthService } from '../authentifiaction/auth.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserSercice {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/utilisateurs';
-
+  private baseUrl = `${environment.apiUrl}/utilisateurs`;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

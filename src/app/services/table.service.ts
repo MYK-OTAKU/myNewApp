@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableService {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/api/tables';
+  private baseUrl = 'https://rmsbackend-silk.vercel.app/api/tables';
 
   constructor(private http: HttpClient) {}
 

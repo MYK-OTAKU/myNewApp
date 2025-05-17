@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://rms-production-4a42.up.railway.app/api';
+  private baseUrl = `${environment.apiUrl}`;
   private tokenKey = 'auth_token';
 
   constructor(private http: HttpClient, private router: Router) {}

@@ -7,6 +7,7 @@ import { Commande, DetailCommande } from '../../../models/commande.model';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';  // Importer FormsModule
+import { environment } from '../../../../environments/environment';
 
 @Component({
   standalone: true,
@@ -133,6 +134,6 @@ export class PosTerminalComponent implements OnInit {
   }
 
   getImageUrl(imageName: string | undefined): string {
-    return imageName ? `'https://rms-production-4a42.up.railway.app/api/${imageName}` : 'default-image-path'; // Provide a default image path if needed
+    return imageName ? `${environment.apiUrl}/${imageName}` : 'default-image-path';
   }
 }

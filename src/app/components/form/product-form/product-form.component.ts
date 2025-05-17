@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { Produit, Categorie } from '../../../models/produit.model';
 import { ProduitService } from '../../../services/produits/produit.service';
 import { CategorieService } from '../../../services/categories/categorie.service';
-
+import { environment } from '../../../../environments/environment';
+import { MessageBoxService } from '../../../services/message-box.service'; // Importer le service ici
 @Component({
   standalone: true,
   imports: [CommonModule, FormsModule],
@@ -21,7 +22,7 @@ export class ProductFormComponent implements OnInit {
   categories: Categorie[] = [];
   selectedImage: string | ArrayBuffer | null = null;
   imageFile: File | null = null;
-  defaultImage: string = '../../../assets/images/carts.png';
+  defaultImage: string = '${environment.apiUrl}/images/carts.png';
   product: Produit = {
     id: 0,
     nom: '',
@@ -35,7 +36,8 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private productService: ProduitService,
     private categoryService: CategorieService,
-    private router: Router
+    private router: Router,
+    private messageBoxService: MessageBoxService // Injecter le service ici
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class ProductFormComponent implements OnInit {
     if (product) {
       this.isEditMode = true;
       this.product = { ...product };
-      this.selectedImage = product.imagePrincipale ? `https://rms-production-4a42.up.railway.app/api/${product.imagePrincipale}` : this.defaultImage;
+      this.selectedImage = product.imagePrincipale ? `${environment.apiUrl}/${product.imagePrincipale}` : this.defaultImage;
     } else {
       this.isEditMode = false;
       this.product = {
@@ -76,7 +78,7 @@ export class ProductFormComponent implements OnInit {
     this.productService.getProduit(id).subscribe({
       next: (data: Produit) => {
         this.product = data;
-        this.selectedImage = data.imagePrincipale ? `https://rms-production-4a42.up.railway.app/api/${data.imagePrincipale}` : this.defaultImage;
+        this.selectedImage = data.imagePrincipale ? `${environment.apiUrl}/${data.imagePrincipale}` : this.defaultImage;
       },
       error: (error: any) => {
         console.error('Erreur lors du chargement du produit:', error);
@@ -95,7 +97,21 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
+  // Modifier la méthode saveProduct pour gérer l'erreur de fichier
+
   saveProduct() {
+    // Vérifiez si nous sommes en mode édition et si une nouvelle image a été sélectionnée
+    const needsImageUpload = this.imageFile !== null;
+    
+    // Si l'API est hébergée sur Vercel et que nous avons besoin d'uploader une image
+    if (environment.apiUrl.includes('vercel.app') && needsImageUpload) {
+      this.messageBoxService.showMessage(
+        "L'upload d'images n'est pas disponible sur Vercel. Utilisez un service de stockage externe comme Cloudinary ou AWS S3.", 
+        'error'
+      );
+      return;
+    }
+
     const formData = new FormData();
     formData.append('nom', this.product.nom);
     formData.append('description', this.product.description || '');
@@ -116,6 +132,7 @@ export class ProductFormComponent implements OnInit {
         },
         error: (error: any) => {
           console.error('Erreur lors de la mise à jour du produit:', error);
+          this.messageBoxService.showMessage('Erreur lors de la mise à jour du produit: ' + error.message, 'error');
         }
       });
     } else {
@@ -127,6 +144,7 @@ export class ProductFormComponent implements OnInit {
         },
         error: (error: any) => {
           console.error('Erreur lors de la création du produit:', error);
+          this.messageBoxService.showMessage('Erreur lors de la création du produit: ' + error.message, 'error');
         }
       });
     }
