@@ -1,27 +1,94 @@
-# MyNewApp
+# RMS - Restaurant Management System 🍽️
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+A web-based restaurant management application designed to help manage menus, orders, and tables more efficiently.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🔗 Live Demo
 
-## Code scaffolding
+🌐 [Access the app here](https://mohamedyehiyakoita.vercel.app)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+🧪 **Test Credentials**  
+- **Username**: `Guest`  
+- **Password**: `123`  
+The Guest account has **admin access** so feel free to explore all features of the app.
 
-## Build
+> ⚠️ Note: The app is still under development. Some features might be incomplete or pending refinement.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🖼️ Screenshot
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 🔐 Login Page
+![Login Page](./screenshots/login-preview.PNG)
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🧰 Tech Stack
 
-## Further help
+### Frontend
+- **Framework**: Angular
+- **UI Styling**: Tailwind CSS
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Backend
+- **Runtime**: Node.js
+- **Framework**: Express
+- **Hosting**: Railway
+
+### Database
+- **Type**: MongoDB *(or other depending on implementation)*
+
+---
+
+## 🧑‍💻 Features
+
+- Admin login system  
+- Manage restaurant menus and items  
+- Order processing and table tracking  
+- Responsive and user-friendly UI  
+- Protected routes for admin features
+
+---
+
+## 🚧 Work in Progress
+
+This is a personal project still in development. I'm constantly working on:
+- Adding role-based permissions
+- Refining the UI/UX
+- Integrating real-time updates
+
+---
+
+## 📁 Project Structure (Frontend)
+
+MyNewApp/
+
+├── src/
+
+│ ├── app/
+
+│ │ ├── components/
+
+│ │ ├── pages/
+
+│ │ ├── services/
+
+│ └── assets/
+
+├── tailwind.config.js
+
+└── angular.json
+
+
+---
+
+## 📬 Contact
+
+- **GitHub**: [MYK-OTAKU](https://github.com/MYK-OTAKU)
+- **LinkedIn**: [Mohamed Yehiya Koïta](https://www.linkedin.com/in/mohamed-yehiya-koita)
+
+---
+
+## 📝 License
+
+This project is for educational and personal showcase purposes.
